@@ -8,5 +8,8 @@ Far and Wide
 #Introduction
 Short introduction about the game
 
+#Story
+placeholder
+
 #Gameplay
-What do you do in the game?
+placeholder
