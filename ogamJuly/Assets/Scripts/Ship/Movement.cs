@@ -26,9 +26,9 @@ public class Movement : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             MoveTowardMousePos();
-            RotateTowardMousePos();
         }
-	}
+        RotateTowardMousePos();
+    }
 
     /// <summary>
     /// We only need the x and y axis as our game is in 2d
