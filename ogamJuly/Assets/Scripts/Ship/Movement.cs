@@ -6,7 +6,6 @@ public class Movement : MonoBehaviour {
     [SerializeField]
     private float speed = 0.5f;
     private Rigidbody attatchedRB = null;
-    private Vector3 mousePos;
 
     public float ShipTurnRate = 0.3f;
 
