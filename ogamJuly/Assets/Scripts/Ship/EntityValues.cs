@@ -25,7 +25,7 @@ public class EntityValues : MonoBehaviour {
         Debug.Log(gameObject.name + " is dead");
         if (transform.tag.Equals("Enemy"))
         {
-            Destroy(Instantiate(Resources.Load("Prefabs/Particles/UglyExplosion")), 5);
+            Destroy(Instantiate(Resources.Load("Prefabs/Particles/UglyExplosion"), transform.position, Quaternion.identity), 5);
             
             Destroy(gameObject);
         }

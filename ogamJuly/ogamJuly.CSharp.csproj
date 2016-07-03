@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\Ship\EntityValues.cs" />
     <Compile Include="Assets\Scripts\Ship\Modules.cs" />
     <Compile Include="Assets\Scripts\Ship\Movement.cs" />

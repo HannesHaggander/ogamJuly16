@@ -15,8 +15,7 @@ public class LazerRepeater : MonoBehaviour {
 
     public Transform shootFromPos = null;
     public Transform shootToPos = null;
-
-    public GameObject test = null;
+    
 
     void Start()
     {
@@ -48,7 +47,6 @@ public class LazerRepeater : MonoBehaviour {
         }
 
         lr.enabled = true;
-        test.transform.position = tmpEndPos;
 
         Vector3[] lr_pos = {shootFromPos.position, tmpEndPos};
         lr.SetPositions(lr_pos);
