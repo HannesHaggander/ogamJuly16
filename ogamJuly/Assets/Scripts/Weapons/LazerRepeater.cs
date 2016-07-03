@@ -8,6 +8,8 @@ public class LazerRepeater : MonoBehaviour {
     public float reloadSpeed = 0.1f;
     public float shootDistance = 1;
     public float LazerDelayTime = 0.2f;
+    private RaycastHit rch;
+    public int DamagePerHit = 1;
 
     public LineRenderer lr; 
 
@@ -33,10 +35,22 @@ public class LazerRepeater : MonoBehaviour {
 
     void ShootLazer()
     {
-        lr.enabled = true;
-        test.transform.position = shootToPos.position;
+        Vector3 tmpEndPos;
+        if(Physics.Linecast(shootFromPos.position, shootToPos.position, out rch))
+        {
+            if (rch.transform.tag.Equals("Enemy")){
+                rch.transform.GetComponent<EntityValues>().RemoveHealth(DamagePerHit);
+            }
+            tmpEndPos = rch.point;
+        } else
+        {
+            tmpEndPos = shootToPos.position;
+        }
 
-        Vector3[] lr_pos = {shootFromPos.position, shootToPos.position};
+        lr.enabled = true;
+        test.transform.position = tmpEndPos;
+
+        Vector3[] lr_pos = {shootFromPos.position, tmpEndPos};
         lr.SetPositions(lr_pos);
         Invoke("disableLineRenderer", LazerDelayTime);
     }
