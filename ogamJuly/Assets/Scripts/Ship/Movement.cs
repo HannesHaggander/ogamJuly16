@@ -50,16 +50,17 @@ public class Movement : MonoBehaviour {
 
     private void RotateTowardMousePos()
     {
-
-    }
-
-    private void Quick2dRot()
-    {
         Vector3 movDir = GetXYMousePos() - transform.position;
         if (movDir != Vector3.zero)
         {
             float angle = Mathf.Atan2(movDir.y, movDir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            Quaternion tmpRot = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Lerp(transform.rotation, tmpRot, ShipTurnRate * Time.deltaTime);
         }
+    }
+
+    private void Quick2dRot()
+    {
+        
     }
 }
