@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour {
     private float speed = 0.5f;
     private Rigidbody attatchedRB = null;
 
+    public string StopAxis = "StopShip";
+
     public float ShipTurnRate = 0.3f;
     public Vector3 MovePoint = Vector3.zero;
 
@@ -32,6 +34,10 @@ public class Movement : MonoBehaviour {
         {
             RotateTowardMousePos();
         }
+        if (Input.GetButtonDown(StopAxis)){
+            MovePoint = transform.position;
+        }
+
         MoveTowardMousePos();
     }
 

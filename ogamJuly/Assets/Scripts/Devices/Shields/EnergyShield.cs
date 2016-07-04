@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnergyShield : MonoBehaviour {
+public class EnergyShield : BaseShield {
 
     public string ActivateShield = "ActivateShield";
     public bool active = false;
-    private Modules mods = null;
 
     //values
     [SerializeField]
@@ -18,18 +17,9 @@ public class EnergyShield : MonoBehaviour {
     private int shield_rechargeValue = 1;
     [SerializeField]
     private int shield_rechargeInterval = 1;
-
-    void Start()
-    {
-        mods = transform.root.GetComponent<Modules>(); //TODO fix this latur
-    }
-
-    void Update ()
-    {
-        active = Input.GetButton(ActivateShield);
-    }
-
-    void ShieldBlock(int i)
+    
+    override
+    public void ShieldBlock(int i)
     {
         CancelInvoke("ChargeShield");
         InvokeRepeating("ChargeShield", rechargeTime, shield_rechargeInterval);
@@ -43,14 +33,18 @@ public class EnergyShield : MonoBehaviour {
     /// <returns>
     /// Returns a boolean value if the shield is functional or not
     /// </returns>
-    public bool isShieldUp()
+    override
+    public bool ShieldActive()
     {
+        CancelInvoke("ChargeShield");
+        InvokeRepeating("ChargeShield", rechargeTime, shield_rechargeInterval);
+
         if(shield_currValue <= 0)
         {
             return false;
         }
 
-        return active;
+        return true;
     }
 
     private void ChargeShield()
