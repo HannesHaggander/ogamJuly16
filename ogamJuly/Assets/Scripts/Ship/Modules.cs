@@ -3,6 +3,6 @@ using System.Collections;
 
 public class Modules : MonoBehaviour {
 
-    public GameObject[] Devices;
-
+    public GameObject[] WeaponSlots;
+    public GameObject[] ShieldSlots;
 }

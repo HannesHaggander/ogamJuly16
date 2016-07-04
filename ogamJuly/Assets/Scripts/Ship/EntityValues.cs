@@ -8,32 +8,25 @@ public class EntityValues : MonoBehaviour {
     [SerializeField]
     private int currentHealth = 1;
 
-    public void RemoveHealth(int i)
+    public virtual void RemoveHealth(int i)
     {
         if(i > 0)
         {
             currentHealth -= i;
-            if(currentHealth <= 0)
+            if (checkIfDead())
             {
-                switch(transform.tag){
-                    case "Enemy": KillNPCShip();
-                        break;
-                    default: KillShip();
-                        break;
-                }
+                KillShip();
             }
         }
     }
 
-    private void KillShip()
+    public bool checkIfDead()
     {
-        Debug.Log(gameObject.name + " is dead");
+        return currentHealth <= 0;
     }
 
-    private void KillNPCShip()
+    public virtual void KillShip()
     {
-        Destroy(Instantiate(Resources.Load("Prefabs/Particles/UglyExplosion"), transform.position, Quaternion.identity), 5);
-
-        Destroy(gameObject);
+        Debug.Log(gameObject.name + " is dead");
     }
 }
