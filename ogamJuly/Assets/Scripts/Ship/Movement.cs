@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour {
     private Rigidbody attatchedRB = null;
 
     public float ShipTurnRate = 0.3f;
+    public Vector3 MovePoint = Vector3.zero;
 
     //tmp variables for calculations
     Vector3 mouseposTmp;
@@ -18,15 +19,17 @@ public class Movement : MonoBehaviour {
         {
             attatchedRB = GetComponent<Rigidbody>();
         }
+        MovePoint = transform.position;
 	}
 	
 	void FixedUpdate ()
     {
         if (Input.GetMouseButton(0))
         {
-            MoveTowardMousePos();
+            MovePoint = GetXYMousePos();
         }
         RotateTowardMousePos();
+        MoveTowardMousePos();
     }
 
     /// <summary>
@@ -42,11 +45,17 @@ public class Movement : MonoBehaviour {
         return mouseposTmp;
     }
 
+    /// <summary>
+    /// Move the transform towards the mouse position where the user pressed left mouse button
+    /// </summary>
     private void MoveTowardMousePos()
     {
-        transform.position = Vector3.MoveTowards(transform.position, GetXYMousePos(), speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, MovePoint, speed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Rotate front towards the mouse position
+    /// </summary>
     private void RotateTowardMousePos()
     {
         Vector3 movDir = GetXYMousePos() - transform.position;
@@ -56,10 +65,5 @@ public class Movement : MonoBehaviour {
             Quaternion tmpRot = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.Lerp(transform.rotation, tmpRot, ShipTurnRate * Time.deltaTime);
         }
-    }
-
-    private void Quick2dRot()
-    {
-        
     }
 }
