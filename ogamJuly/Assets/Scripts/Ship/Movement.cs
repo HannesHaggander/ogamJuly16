@@ -28,7 +28,10 @@ public class Movement : MonoBehaviour {
         {
             MovePoint = GetXYMousePos();
         }
-        RotateTowardMousePos();
+        if (!Input.GetMouseButton(1))
+        {
+            RotateTowardMousePos();
+        }
         MoveTowardMousePos();
     }
 
@@ -63,7 +66,7 @@ public class Movement : MonoBehaviour {
         {
             float angle = Mathf.Atan2(movDir.y, movDir.x) * Mathf.Rad2Deg;
             Quaternion tmpRot = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.Lerp(transform.rotation, tmpRot, ShipTurnRate * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, tmpRot, ShipTurnRate * Time.deltaTime);
         }
     }
 }

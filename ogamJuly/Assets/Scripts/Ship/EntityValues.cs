@@ -15,7 +15,12 @@ public class EntityValues : MonoBehaviour {
             currentHealth -= i;
             if(currentHealth <= 0)
             {
-                KillShip();
+                switch(transform.tag){
+                    case "Enemy": KillNPCShip();
+                        break;
+                    default: KillShip();
+                        break;
+                }
             }
         }
     }
@@ -23,11 +28,12 @@ public class EntityValues : MonoBehaviour {
     private void KillShip()
     {
         Debug.Log(gameObject.name + " is dead");
-        if (transform.tag.Equals("Enemy"))
-        {
-            Destroy(Instantiate(Resources.Load("Prefabs/Particles/UglyExplosion"), transform.position, Quaternion.identity), 5);
-            
-            Destroy(gameObject);
-        }
+    }
+
+    private void KillNPCShip()
+    {
+        Destroy(Instantiate(Resources.Load("Prefabs/Particles/UglyExplosion"), transform.position, Quaternion.identity), 5);
+
+        Destroy(gameObject);
     }
 }
