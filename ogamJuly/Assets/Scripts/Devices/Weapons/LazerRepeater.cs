@@ -37,7 +37,7 @@ public class LazerRepeater : MonoBehaviour {
         Vector3 tmpEndPos;
         if(Physics.Linecast(shootFromPos.position, shootToPos.position, out rch))
         {
-            if (rch.transform.tag.Equals("Enemy")){
+            if (rch.transform.root.tag.Equals("Enemy")){
                 rch.transform.GetComponent<EntityValues>().RemoveHealth(DamagePerHit);
             }
             tmpEndPos = rch.point;
