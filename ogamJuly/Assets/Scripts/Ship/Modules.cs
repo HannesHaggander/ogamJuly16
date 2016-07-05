@@ -35,4 +35,14 @@ public class Modules : MonoBehaviour {
 
         return null;
     }
+
+    public GameObject GetModuleWeapon(int weaponSlot)
+    {
+        if(weaponSlot > WeaponSlots.Length)
+        {
+            return null;
+        }
+
+        return WeaponSlots[weaponSlot];
+    }
 }

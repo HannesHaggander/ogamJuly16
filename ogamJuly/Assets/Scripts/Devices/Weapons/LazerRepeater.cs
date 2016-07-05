@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LazerRepeater : MonoBehaviour {
-
-    public string shootInputAxis = "ShipSlot_1";
+public class LazerRepeater : BaseWeapon {
+    
     public int ammunition = 100;
     public float reloadSpeed = 0.1f;
     public float shootDistance = 1;
@@ -19,20 +18,15 @@ public class LazerRepeater : MonoBehaviour {
 
     void Start()
     {
+        base.makeOnStart();
         lr = GetComponent<LineRenderer>();
         Vector3 tmp = Vector3.zero;
         tmp.x = shootDistance;
         shootToPos.position = tmp;
     }
 
-	void Update () {
-        if (Input.GetButtonDown(shootInputAxis))
-        {
-            ShootLazer();
-        }
-	}
-
-    void ShootLazer()
+    override
+    public void FireWeapon()
     {
         Vector3 tmpEndPos;
         if(Physics.Linecast(shootFromPos.position, shootToPos.position, out rch))

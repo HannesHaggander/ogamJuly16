@@ -12,7 +12,6 @@ public class EntityValues : MonoBehaviour {
 
     void Start()
     {
-        Debug.Log("Tst_ " + transform.root);
         mods = transform.root.GetComponent<Modules>();
     }
 
