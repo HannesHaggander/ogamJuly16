@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Devices\Weapons\LazerRepeater.cs" />
     <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\Ship\EntValEnemy.cs" />
+    <Compile Include="Assets\Scripts\Ship\EntValModule.cs" />
     <Compile Include="Assets\Scripts\Ship\EntityValues.cs" />
     <Compile Include="Assets\Scripts\Ship\Modules.cs" />
     <Compile Include="Assets\Scripts\Ship\Movement.cs" />
