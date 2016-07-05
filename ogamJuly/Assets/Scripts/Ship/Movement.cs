@@ -75,4 +75,13 @@ public class Movement : MonoBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, tmpRot, ShipTurnRate * Time.deltaTime);
         }
     }
+
+    /// <summary>
+    /// returns the ships speed...
+    /// </summary>
+    /// <returns> the ships speed </returns>
+    public float GetShipSpeed()
+    {
+        return speed;
+    }
 }

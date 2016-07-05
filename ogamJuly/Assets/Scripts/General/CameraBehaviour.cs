@@ -2,9 +2,10 @@
 using System.Collections;
 
 public class CameraBehaviour : MonoBehaviour {
-
+    
     public Transform cameraTarget = null;
-    public float cameraFollowSpeed = 1;
+    [SerializeField]
+    private float cameraFollowSpeed = 1;
     public float DeadZone = 1;
 
     void FixedUpdate()
@@ -26,4 +27,10 @@ public class CameraBehaviour : MonoBehaviour {
     {
         transform.position = Vector3.Lerp(transform.position, getAdjustedZAxis(), cameraFollowSpeed * Time.deltaTime);
     }
+    
+    public Transform GetCameraTarget()
+    {
+        return cameraTarget;
+    }
+
 }
