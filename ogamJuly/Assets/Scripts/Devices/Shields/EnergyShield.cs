@@ -18,6 +18,11 @@ public class EnergyShield : BaseShield {
     [SerializeField]
     private int shield_rechargeInterval = 1;
     
+    void Start()
+    {
+        ChangeSprite(shield_currValue);
+    }
+
     override
     public void ShieldBlock(int i)
     {
@@ -25,6 +30,7 @@ public class EnergyShield : BaseShield {
         InvokeRepeating("ChargeShield", rechargeTime, shield_rechargeInterval);
         shield_currValue -= i;
         shield_currValue = Mathf.Clamp(shield_currValue, 0, shield_maxValue);
+        ChangeSprite(shield_currValue);
     }
 
     /// <summary>
@@ -49,7 +55,24 @@ public class EnergyShield : BaseShield {
 
     private void ChargeShield()
     {
+        ChangeSprite(shield_currValue);
         shield_currValue += shield_rechargeValue;
         shield_currValue = Mathf.Clamp(shield_currValue, 0, shield_maxValue);
+    }
+
+    private void ChangeSprite(int i)
+    {
+        SpriteRenderer sprite_component = GetComponentInChildren<SpriteRenderer>();
+        string sprite_path = "Graphics/Shields/EnergyShield_";
+        if (i <= 0)
+        {
+            sprite_path += "inactive";
+        }
+        else
+        {
+            sprite_path += "active";
+        }
+        Sprite tstSprite = Resources.Load<Sprite>(sprite_path);
+        sprite_component.sprite = tstSprite;
     }
 }
