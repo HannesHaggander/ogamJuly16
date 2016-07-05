@@ -36,6 +36,11 @@ public class Modules : MonoBehaviour {
         return null;
     }
 
+    /// <summary>
+    /// get the weapon in parameter slot
+    /// </summary>
+    /// <param name="weaponSlot"> index of the weapon in the weaponSlots array</param>
+    /// <returns> returns the weapon in slot of the parameter</returns>
     public GameObject GetModuleWeapon(int weaponSlot)
     {
         if(weaponSlot > WeaponSlots.Length)

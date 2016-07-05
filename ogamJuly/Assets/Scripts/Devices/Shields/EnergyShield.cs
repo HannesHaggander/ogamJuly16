@@ -23,6 +23,10 @@ public class EnergyShield : BaseShield {
         ChangeSprite(shield_currValue);
     }
 
+    /// <summary>
+    /// Blocks incomming damage
+    /// </summary>
+    /// <param name="i"> damage to be blocked </param>
     override
     public void ShieldBlock(int i)
     {
@@ -53,6 +57,9 @@ public class EnergyShield : BaseShield {
         return true;
     }
 
+    /// <summary>
+    /// The shield regainst hitpoints if the ship has not been hit for a while (shield_rechargeValue in seconds)
+    /// </summary>
     private void ChargeShield()
     {
         ChangeSprite(shield_currValue);
@@ -60,6 +67,10 @@ public class EnergyShield : BaseShield {
         shield_currValue = Mathf.Clamp(shield_currValue, 0, shield_maxValue);
     }
 
+    /// <summary>
+    /// Changes sprite of the energy shield depending on if its active or not
+    /// </summary>
+    /// <param name="i"></param>
     private void ChangeSprite(int i)
     {
         SpriteRenderer sprite_component = GetComponentInChildren<SpriteRenderer>();

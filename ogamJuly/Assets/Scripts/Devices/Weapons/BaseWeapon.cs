@@ -8,6 +8,9 @@ public class BaseWeapon : MonoBehaviour {
     private Modules shipModules = null;
     public int myWeaponSlot = 1;
 
+    /// <summary>
+    /// use this in every weapon void Start() to initiate weapons
+    /// </summary>
     public virtual void makeOnStart()
     {
         shipModules = transform.root.GetComponent<Modules>();
@@ -23,11 +26,14 @@ public class BaseWeapon : MonoBehaviour {
         }
 	}
 
+    /// <summary>
+    /// Fire the Weapon with index of the parameter
+    /// </summary>
+    /// <param name="i"> index of the weapon</param>
     void FirePressedWeapon(int i)
     {
         if (shipModules)
         {
-            Debug.Log("getting " + (i - 1) + transform.parent.name);
             GameObject go = shipModules.GetModuleWeapon(i-1);
             go.GetComponentInChildren<BaseWeapon>().FireWeapon();
         }
@@ -37,11 +43,18 @@ public class BaseWeapon : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Should be overridden by weapons, this is to inform that it has not been overridden, yet.
+    /// </summary>
     public virtual void FireWeapon()
     {
         Debug.Log("BaseWeapon :: FireWeapon -> " + transform.name + " needs override");
     }
 
+    /// <summary>
+    /// Could be used later when the player can change weapon slots
+    /// </summary>
+    /// <param name="i"> index of the weapon slot </param>
     public void SetWeaponSlot(int i)
     {
         if(i >= 0 && shipModules.GetModuleWeapon(i) == gameObject)
