@@ -14,9 +14,7 @@ public class BaseWeapon : MonoBehaviour {
     public virtual void makeOnStart()
     {
         shipModules = transform.root.GetComponent<Modules>();
-        Debug.Log(shipModules + " :: " + transform.root.name);
         fireSlot = "FireWeapon" + myWeaponSlot.ToString();
-        Debug.Log(fireSlot);
     }
 	
 	void Update () {
