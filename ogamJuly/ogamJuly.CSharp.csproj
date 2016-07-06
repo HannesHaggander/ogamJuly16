@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Devices\Shields\EnergyShield.cs" />
     <Compile Include="Assets\Scripts\Devices\Weapons\BaseWeapon.cs" />
     <Compile Include="Assets\Scripts\Devices\Weapons\LazerRepeater.cs" />
+    <Compile Include="Assets\Scripts\Events\RelayBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\ParallaxScrolling.cs" />
     <Compile Include="Assets\Scripts\Ship\EntValEnemy.cs" />
