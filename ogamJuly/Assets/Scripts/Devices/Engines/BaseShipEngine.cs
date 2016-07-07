@@ -31,5 +31,4 @@ public class BaseShipEngine : MonoBehaviour {
             boostSpeed = i;
         }
     }
-
 }
