@@ -34,6 +34,7 @@ public class ParallaxScrolling : MonoBehaviour {
                 if (movement)
                 {
                     tmp = movement.GetShipSpeed();
+                    tmp /= 10;
                     return tmp;
                 }
             }

@@ -5,8 +5,8 @@ public class Modules : MonoBehaviour {
 
     public GameObject[] WeaponSlots;
     public GameObject[] ShieldSlots;
-
-    private GameObject tmpGO = null;
+    public GameObject[] EngineSlots;
+    public GameObject[] MiscSlots;
 
     /// <summary>
     /// finds a shield that is capable of blocking shots
@@ -49,5 +49,32 @@ public class Modules : MonoBehaviour {
         }
 
         return WeaponSlots[weaponSlot];
+    }
+
+    /// <summary>
+    /// Returns the first engine that is not null
+    /// </summary>
+    /// <returns> the first engine in the array if there are any, otherwise return null</returns>
+    public GameObject GetEngine()
+    {
+        foreach(GameObject g in EngineSlots)
+        {
+            if(g != null)
+            {
+                return g;
+            }
+        }
+
+        return null;
+    }
+
+    //TODO
+    /// <summary>
+    /// Returns the first misc object, should later be filled with w/e 
+    /// </summary>
+    /// <returns>returns the first misc object</returns>
+    public GameObject GetMisc()
+    {
+        return MiscSlots[0];
     }
 }

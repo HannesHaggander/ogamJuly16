@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Devices\Engines\BaseShipEngine.cs" />
+    <Compile Include="Assets\Scripts\Devices\Engines\EngineNormal.cs" />
     <Compile Include="Assets\Scripts\Devices\Shields\BaseShield.cs" />
     <Compile Include="Assets\Scripts\Devices\Shields\EnergyShield.cs" />
     <Compile Include="Assets\Scripts\Devices\Weapons\BaseWeapon.cs" />

@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour {
     private float speed = 0.5f;
     private Rigidbody attatchedRB = null;
 
-    public string StopAxis = "StopShip";
+    public string BoostAxis = "EngineBoost";
 
     public float ShipTurnRate = 0.3f;
     public Vector3 MovePoint = Vector3.zero;
@@ -34,9 +34,8 @@ public class Movement : MonoBehaviour {
         {
             RotateTowardMousePos();
         }
-        if (Input.GetButtonDown(StopAxis)){
-            MovePoint = transform.position;
-        }
+
+        BoostShip(Input.GetButton(BoostAxis));
 
         MoveTowardMousePos();
     }
@@ -83,5 +82,36 @@ public class Movement : MonoBehaviour {
     public float GetShipSpeed()
     {
         return speed;
+    }
+
+    /// <summary>
+    /// Increase ship speed depending on the engine equiped
+    /// </summary>
+    private void BoostShip(bool argBool)
+    {
+        Modules mods = transform.root.GetComponent<Modules>();
+        if (mods)
+        {
+            GameObject engineGO = mods.GetEngine();
+            if (engineGO)
+            {
+                BaseShipEngine engine = engineGO.GetComponentInChildren<BaseShipEngine>();
+                if (engine)
+                {
+                    if (argBool)
+                    {
+                        speed = engine.GetBoostSpeed();
+                    }
+                    else
+                    {
+                        speed = engine.GetCrusingSpeed();
+                    }
+                }
+            }
+        }
+        else
+        {
+            speed = 1;
+        }
     }
 }

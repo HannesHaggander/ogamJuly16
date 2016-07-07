@@ -8,7 +8,6 @@ public class EntityValues : MonoBehaviour {
     [SerializeField]
     private int currentHealth = 1;
     private Modules mods;
-    private EnergyShield shield = null;
 
     void Start()
     {
