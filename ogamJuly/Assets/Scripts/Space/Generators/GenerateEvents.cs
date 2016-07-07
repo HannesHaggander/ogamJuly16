@@ -46,15 +46,14 @@ public class GenerateEvents : MonoBehaviour {
         }
         GameObject[] events = Resources.LoadAll<GameObject>(eventsFolder);
         float eventDistance = distanceBetweenRelays / maxEvents;
-        for(int i = 1; i <= maxEvents; i++)
+        for (int i = 1; i <= maxEvents; i++)
         {
             Vector3 eventPos = new Vector3(Random.Range(eventXDistance * -1, eventXDistance),
                                            eventDistance * i,
                                            0);
-            GameObject go = (GameObject) Instantiate(events[Random.Range(0, events.Length)], eventPos, Quaternion.identity);
+            GameObject go = (GameObject)Instantiate(events[Random.Range(0, events.Length)], eventPos, Quaternion.identity);
             go.transform.SetParent(EventContainer);
         }
-        Debug.Log(EventContainer.name);
         EventContainer.GetComponent<GeneratedObjs>().GeneratingIsDone();
     }
 }

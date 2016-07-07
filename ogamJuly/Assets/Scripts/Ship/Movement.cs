@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour {
 
     //tmp variables for calculations
     Vector3 mouseposTmp;
+    BaseShipEngine tmpBSE = null;
 
     void Start ()
     {
@@ -21,6 +22,8 @@ public class Movement : MonoBehaviour {
             attatchedRB = GetComponent<Rigidbody>();
         }
         MovePoint = transform.position;
+        tmpBSE = GetEngine();
+        SetTurnSpeed();
 	}
 	
 	void FixedUpdate ()
@@ -88,6 +91,40 @@ public class Movement : MonoBehaviour {
     /// </summary>
     private void BoostShip(bool argBool)
     {
+        if (!tmpBSE)
+        {
+            speed = 1;
+            tmpBSE = GetEngine();
+        }
+        else
+        {
+            if (Input.GetButton(BoostAxis))
+            {
+                speed = tmpBSE.GetBoostSpeed();
+            }
+            else
+            {
+                speed = tmpBSE.GetCrusingSpeed();
+            }
+        }
+      
+    }
+
+    public void SetTurnSpeed()
+    {
+        if (!tmpBSE)
+        {
+            ShipTurnRate = 0.5f;
+            tmpBSE = GetEngine();
+        }
+        else
+        {
+            ShipTurnRate = tmpBSE.GetTurnRate();
+        }
+    }
+
+    private BaseShipEngine GetEngine()
+    {
         Modules mods = transform.root.GetComponent<Modules>();
         if (mods)
         {
@@ -97,20 +134,10 @@ public class Movement : MonoBehaviour {
                 BaseShipEngine engine = engineGO.GetComponentInChildren<BaseShipEngine>();
                 if (engine)
                 {
-                    if (argBool)
-                    {
-                        speed = engine.GetBoostSpeed();
-                    }
-                    else
-                    {
-                        speed = engine.GetCrusingSpeed();
-                    }
+                    return engine;
                 }
             }
         }
-        else
-        {
-            speed = 1;
-        }
+        return null;
     }
 }
