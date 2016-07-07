@@ -17,7 +17,7 @@ public class GenerateEvents : MonoBehaviour {
     {
         CreateRelays();
         GenerateRandomEvents();
-	}
+    }
 
     void CreateRelays()
     {
@@ -34,7 +34,8 @@ public class GenerateEvents : MonoBehaviour {
         Vector3 startToEnd = endRelayPosition - Vector3.zero;
         float angle = Mathf.Atan2(startToEnd.y, startToEnd.x) * Mathf.Rad2Deg;
         Quaternion rotToEnd = Quaternion.AngleAxis(angle, Vector3.forward);
-        Instantiate(relayToSpawn, Vector3.zero, rotToEnd).name = "Relay_Start";       
+        GameObject startRelay = (GameObject)Instantiate(relayToSpawn, Vector3.zero, rotToEnd);
+        startRelay.name = "Relay_Start";
     }
 
     void GenerateRandomEvents()
@@ -53,6 +54,7 @@ public class GenerateEvents : MonoBehaviour {
             GameObject go = (GameObject) Instantiate(events[Random.Range(0, events.Length)], eventPos, Quaternion.identity);
             go.transform.SetParent(EventContainer);
         }
-
+        Debug.Log(EventContainer.name);
+        EventContainer.GetComponent<GeneratedObjs>().GeneratingIsDone();
     }
 }

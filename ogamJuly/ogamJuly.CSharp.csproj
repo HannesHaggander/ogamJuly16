@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Devices\Engines\BaseShipEngine.cs" />
     <Compile Include="Assets\Scripts\Devices\Engines\EngineNormal.cs" />
+    <Compile Include="Assets\Scripts\Devices\Radar\RadarObject.cs" />
+    <Compile Include="Assets\Scripts\Devices\Radar\RadarPointer.cs" />
     <Compile Include="Assets\Scripts\Devices\Shields\BaseShield.cs" />
     <Compile Include="Assets\Scripts\Devices\Shields\EnergyShield.cs" />
     <Compile Include="Assets\Scripts\Devices\Weapons\BaseWeapon.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\Scripts\Ship\Movement.cs" />
     <Compile Include="Assets\Scripts\Space\Generators\GenerateBackground.cs" />
     <Compile Include="Assets\Scripts\Space\Generators\GenerateEvents.cs" />
+    <Compile Include="Assets\Scripts\Space\Generators\GeneratedObjs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

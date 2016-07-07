@@ -4,7 +4,6 @@ using System.Collections;
 public class CameraBehaviour : MonoBehaviour {
     
     public Transform cameraTarget = null;
-    [SerializeField]
     private float cameraFollowSpeed = 1;
     public float DeadZone = 1;
 
