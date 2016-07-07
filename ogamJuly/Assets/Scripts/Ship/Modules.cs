@@ -75,6 +75,10 @@ public class Modules : MonoBehaviour {
     /// <returns>returns the first misc object</returns>
     public GameObject GetMisc()
     {
-        return MiscSlots[0];
+        if(MiscSlots.Length > 0)
+        {
+            return MiscSlots[0];
+        }
+        return null;
     }
 }

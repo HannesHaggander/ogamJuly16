@@ -7,6 +7,8 @@ public class GenerateEvents : MonoBehaviour {
     private string eventsFolder = "Prefabs/Events/GeneratedEvents";
     public float minRelayDistance = 5000, maxRelayDistance = 1000;
     public Transform EventContainer = null;
+    private float distanceBetweenRelays = 5000;
+    private float eventXDistance = 500;
 
     [SerializeField]
     private int maxEvents = 4;
@@ -21,16 +23,18 @@ public class GenerateEvents : MonoBehaviour {
     {
         GameObject relayToSpawn = (GameObject) Resources.Load(prefabRelayPath);
 
+        distanceBetweenRelays = Random.Range(minRelayDistance, maxRelayDistance);
         Vector3 endRelayPosition = new Vector3(Random.Range(-500, 500),
-                                              Random.Range(minRelayDistance, maxRelayDistance),
+                                              distanceBetweenRelays,
                                               0);
         GameObject endRelay = (GameObject)Instantiate(relayToSpawn, endRelayPosition, Quaternion.identity);
         endRelay.AddComponent<RelayBehaviour>();
+        endRelay.name = "Relay_End";
 
         Vector3 startToEnd = endRelayPosition - Vector3.zero;
         float angle = Mathf.Atan2(startToEnd.y, startToEnd.x) * Mathf.Rad2Deg;
         Quaternion rotToEnd = Quaternion.AngleAxis(angle, Vector3.forward);
-        Instantiate(relayToSpawn, Vector3.zero, rotToEnd);       
+        Instantiate(relayToSpawn, Vector3.zero, rotToEnd).name = "Relay_Start";       
     }
 
     void GenerateRandomEvents()
@@ -40,17 +44,15 @@ public class GenerateEvents : MonoBehaviour {
             Debug.Log("You forgot to give GenerateEvent a container for events");
         }
         GameObject[] events = Resources.LoadAll<GameObject>(eventsFolder);
-        for(int i = 0; i < maxRelayDistance/100; i++)
+        float eventDistance = distanceBetweenRelays / maxEvents;
+        for(int i = 1; i <= maxEvents; i++)
         {
-            for(int j = 0; j < maxEvents; j++)
-            {
-                Vector3 eventPosition = new Vector3(Random.Range(-500, 500), i * 100, 0);
-                GameObject spawnedEvent = (GameObject) Instantiate(events[Random.Range(0, events.Length)], eventPosition, Quaternion.identity);
-                if (EventContainer)
-                {
-                    spawnedEvent.transform.SetParent(EventContainer);
-                }
-            }
+            Vector3 eventPos = new Vector3(Random.Range(eventXDistance * -1, eventXDistance),
+                                           eventDistance * i,
+                                           0);
+            GameObject go = (GameObject) Instantiate(events[Random.Range(0, events.Length)], eventPos, Quaternion.identity);
+            go.transform.SetParent(EventContainer);
         }
+
     }
 }

@@ -12,7 +12,11 @@ public class CameraBehaviour : MonoBehaviour {
     {
         if(Vector3.Distance(transform.position, getAdjustedZAxis()) > DeadZone)
         {
-            FollowTarget();
+            if (cameraTarget)
+            {
+                cameraFollowSpeed = cameraTarget.root.GetComponent<Movement>().GetShipSpeed()/2;
+                FollowTarget();
+            }
         }
     }
 
