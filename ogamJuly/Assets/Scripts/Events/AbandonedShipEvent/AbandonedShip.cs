@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class AbandonedShip : BaseEventsUtils {
-    
+
+    [SerializeField]
+    protected GameObject[] Events;
+
 	void Update ()
     {
         if (base.LookForPlayer())
@@ -13,6 +16,8 @@ public class AbandonedShip : BaseEventsUtils {
 
     override protected void SpawnRandomEvent()
     {
-        Debug.Log("Get random event for abandoned ship");
+        Debug.Log("Generating event...");
+        Instantiate(Events[Random.Range(0, Events.Length)], transform.position, transform.rotation);
+        Destroy(transform.GetComponent<AbandonedShip>());
     }
 }

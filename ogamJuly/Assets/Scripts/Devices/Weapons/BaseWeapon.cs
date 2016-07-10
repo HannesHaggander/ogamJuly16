@@ -7,6 +7,8 @@ public class BaseWeapon : MonoBehaviour {
 
     private Modules shipModules = null;
     public int myWeaponSlot = 1;
+    private float weaponCooldown = 0;
+    private bool onCoolDown = false;
 
     /// <summary>
     /// use this in every weapon void Start() to initiate weapons
@@ -60,5 +62,29 @@ public class BaseWeapon : MonoBehaviour {
             myWeaponSlot = i;
             fireSlot = "FireWeapon" + i.ToString();
         }
+    }
+
+    protected void SetCoolDown(float i)
+    {
+        if(i > 0)
+        {
+            weaponCooldown = i;
+        }
+    }
+
+    protected void InitiateCoolDown()
+    {
+        onCoolDown = true;
+        Invoke("ResetCoolDown", weaponCooldown);
+    }
+
+    private void ResetCoolDown()
+    {
+        onCoolDown = false;
+    }
+    
+    protected bool GetCoolDown()
+    {
+        return onCoolDown;
     }
 }

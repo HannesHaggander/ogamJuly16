@@ -9,6 +9,7 @@ public class LazerRepeater : BaseWeapon {
     public float LazerDelayTime = 0.2f;
     private RaycastHit rch;
     public int DamagePerHit = 1;
+    public float LazerRepeaterCoolDown = 0.1f;
 
     public LineRenderer lr; 
 
@@ -19,15 +20,20 @@ public class LazerRepeater : BaseWeapon {
     void Start()
     {
         base.makeOnStart();
+        base.SetCoolDown(LazerRepeaterCoolDown);
         lr = GetComponent<LineRenderer>();
         Vector3 tmp = Vector3.zero;
         tmp.x = shootDistance;
         shootToPos.position = tmp;
     }
 
-    override
-    public void FireWeapon()
+    override public void FireWeapon()
     {
+        if (base.GetCoolDown())
+        {
+            return;
+        }
+        base.InitiateCoolDown();
         Vector3 tmpEndPos;
         if(Physics.Linecast(shootFromPos.position, shootToPos.position, out rch))
         {

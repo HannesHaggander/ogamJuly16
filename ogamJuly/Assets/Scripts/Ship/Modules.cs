@@ -51,6 +51,11 @@ public class Modules : MonoBehaviour {
         return WeaponSlots[weaponSlot];
     }
 
+    public GameObject[] GetWeapons()
+    {
+        return WeaponSlots;
+    }
+
     /// <summary>
     /// Returns the first engine that is not null
     /// </summary>
