@@ -37,7 +37,7 @@ public class LazerRepeater : BaseWeapon {
         Vector3 tmpEndPos;
         if(Physics.Linecast(shootFromPos.position, shootToPos.position, out rch))
         {
-            if (rch.transform.root.tag.Equals("Enemy")){
+            if (!rch.transform.root.tag.Equals(transform.root.tag)){
                 EntityValues tmpEntVals = rch.transform.GetComponent<EntityValues>();
                 if (tmpEntVals)
                 {
