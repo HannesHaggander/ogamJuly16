@@ -32,6 +32,10 @@ public class BaseWeapon : MonoBehaviour {
     /// <param name="i"> index of the weapon</param>
     void FirePressedWeapon(int i)
     {
+        if (!transform.root.tag.Equals("Player"))
+        {
+            return;
+        }
         if (shipModules)
         {
             GameObject go = shipModules.GetModuleWeapon(i-1);

@@ -28,7 +28,7 @@ public class CameraBehaviour : MonoBehaviour {
 
     private void FollowTarget()
     {
-        transform.position = Vector3.Lerp(transform.position, getAdjustedZAxis(), cameraFollowSpeed * Time.deltaTime);
+        transform.position = Vector3.Slerp(transform.position, getAdjustedZAxis(), cameraFollowSpeed * Time.deltaTime);
     }
     
     public Transform GetCameraTarget()

@@ -10,9 +10,8 @@ public class AttackPlayer : MonoBehaviour {
     [SerializeField]
     private Transform target;
     private Vector3 spawnPos;
-    private float loseAggro = 50;
+    public float loseAggro = 50;
     private float distanceBetwenTarget;
-    private float closeEnough = 2;
 
     //find components
     Modules mods = null;
@@ -25,7 +24,7 @@ public class AttackPlayer : MonoBehaviour {
     [SerializeField] private float aggroRange = 10;
 
     //chase player
-    private float shootDistance = 5;
+    public float shootDistance = 5;
 
     void Start()
     {
@@ -34,9 +33,11 @@ public class AttackPlayer : MonoBehaviour {
         engineGO = mods.GetEngine();
         if (engineGO)
         {
-            equipedEngine.GetComponent<BaseShipEngine>();
+            Debug.Log("Found engine " + engineGO.name);
+            equipedEngine = engineGO.GetComponentInChildren<BaseShipEngine>();
             if (equipedEngine)
             {
+                Debug.Log("Found engine script");
                 cruiseSpeed = equipedEngine.GetCrusingSpeed();
                 boostSpeed = equipedEngine.GetBoostSpeed();
                 turnRate = equipedEngine.GetTurnRate();
@@ -88,22 +89,21 @@ public class AttackPlayer : MonoBehaviour {
     
     void MoveToSpawn()
     {
-        transform.position = Vector3.Lerp(transform.position, spawnPos, boostSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, spawnPos, boostSpeed * Time.deltaTime);
     }
 
     void ChasePlayer()
     {
-        transform.position = Vector3.Lerp(transform.position, target.transform.position, cruiseSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, cruiseSpeed * Time.deltaTime);
     }
 
     void ShootAtTarget()
     {
-        Debug.Log("Shooting");
         if(equpiedWeapons.Length > 0)
         {
             foreach(GameObject g in equpiedWeapons)
             {
-                BaseWeapon gWeapon = g.GetComponent<BaseWeapon>();
+                BaseWeapon gWeapon = g.GetComponentInChildren<BaseWeapon>();
                 if (gWeapon)
                 {
                     gWeapon.FireWeapon();

@@ -23,8 +23,8 @@ public class LazerRepeater : BaseWeapon {
         base.SetCoolDown(LazerRepeaterCoolDown);
         lr = GetComponent<LineRenderer>();
         Vector3 tmp = Vector3.zero;
-        tmp.x = shootDistance;
-        shootToPos.position = tmp;
+        tmp.y = shootDistance;
+        shootToPos.localPosition = tmp;
     }
 
     override public void FireWeapon()

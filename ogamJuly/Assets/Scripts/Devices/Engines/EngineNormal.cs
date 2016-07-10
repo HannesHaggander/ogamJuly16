@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EngineNormal : BaseShipEngine {
 
-    private int CrusingSpeed = 2;
+    private int CrusingSpeed = 5;
     private int BoostSpeed = 20;
     private float TurnRate = 3;
 
@@ -20,11 +20,11 @@ public class EngineNormal : BaseShipEngine {
     {
         if (Input.GetButton("EngineBoost") && engineParticles)
         {
-            engineParticles.emissionRate = 50;
+            engineParticles.emissionRate = 100;
 
         } else
         {
-            engineParticles.emissionRate = 10;
+            engineParticles.emissionRate = 50;
         }
     }
 }
