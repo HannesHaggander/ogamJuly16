@@ -29,6 +29,9 @@ public class UserInterface : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Finds the player with the tag "Player"
+    /// </summary>
     public void GetPlayer()
     {
         if (!PlayerShip)
