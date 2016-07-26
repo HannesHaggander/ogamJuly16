@@ -12,6 +12,8 @@ public class GenerateGalaxy : MonoBehaviour
 
     private GameObject[] SpawnedGalaxies;
 
+    Vector3 suggestedSpawn = Vector3.zero;
+
     void Start()
     {
         if (isGenerated)
@@ -39,6 +41,7 @@ public class GenerateGalaxy : MonoBehaviour
             {
                 OKSpawn = Vector3.zero;
             }
+
             GameObject tmpGalaxy = (GameObject) Instantiate(galaxyPrefab, OKSpawn, Quaternion.identity);
             SpawnedGalaxies[i] = tmpGalaxy;
             SpawnedGalaxies[i].transform.parent = transform;
@@ -86,9 +89,9 @@ public class GenerateGalaxy : MonoBehaviour
     /// <returns>an ok position in space to spawn a galaxy</returns>
     private Vector3 GetOkPosition()
     {
-        Vector3 suggestedSpawn = Vector3.zero;
-        suggestedSpawn.x += Random.Range(0, 2) > 0 ? Random.Range(galaxySpawnDistanceMin, galaxySpawnDistanceMax) : Random.Range(-galaxySpawnDistanceMax, -galaxySpawnDistanceMin);
-        suggestedSpawn.y += Random.Range(0, 2) > 0 ? Random.Range(galaxySpawnDistanceMin, galaxySpawnDistanceMax) : Random.Range(-galaxySpawnDistanceMax, -galaxySpawnDistanceMin);
+
+        suggestedSpawn.x += Random.Range(galaxySpawnDistanceMin, galaxySpawnDistanceMax);
+        suggestedSpawn.y = Random.Range(0, 2) > 0 ? Random.Range(galaxySpawnDistanceMin, galaxySpawnDistanceMax) : Random.Range(-galaxySpawnDistanceMax, -galaxySpawnDistanceMin);
 
         return suggestedSpawn;
     }
