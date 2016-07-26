@@ -8,7 +8,7 @@ public class GenerateGalaxy : MonoBehaviour
     private string pathToGalaxiy = "Prefabs/SpaceObjects/Galaxy";
     private float galaxySpawnDistanceMin = 2;
     private float galaxySpawnDistanceMax = 5;
-    private float galaxyPaddingDistance = 10;
+    private float galaxyPaddingDistance = 3;
 
     private GameObject[] SpawnedGalaxies;
 
@@ -89,10 +89,20 @@ public class GenerateGalaxy : MonoBehaviour
     /// <returns>an ok position in space to spawn a galaxy</returns>
     private Vector3 GetOkPosition()
     {
-
         suggestedSpawn.x += Random.Range(galaxySpawnDistanceMin, galaxySpawnDistanceMax);
         suggestedSpawn.y = Random.Range(0, 2) > 0 ? Random.Range(galaxySpawnDistanceMin, galaxySpawnDistanceMax) : Random.Range(-galaxySpawnDistanceMax, -galaxySpawnDistanceMin);
+        foreach (GameObject g in SpawnedGalaxies)
+        {
+            if (!g)
+            {
+                break;
+            }
 
+            while(Vector2.Distance(suggestedSpawn, g.transform.position) < galaxyPaddingDistance)
+            {
+                suggestedSpawn.y += 0.2f;
+            }
+        }
         return suggestedSpawn;
     }
 
@@ -111,5 +121,4 @@ public class GenerateGalaxy : MonoBehaviour
             Instantiate(g, g.transform.position, g.transform.rotation);
         }
     }
-	
 }
