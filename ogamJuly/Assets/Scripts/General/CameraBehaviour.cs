@@ -7,6 +7,15 @@ public class CameraBehaviour : MonoBehaviour {
     private float cameraFollowSpeed = 1;
     public float DeadZone = 1;
 
+    Vector3 alwayszero;
+
+    void Update()
+    {
+        alwayszero = transform.position;
+        alwayszero.z = -10;
+        transform.position = alwayszero;
+    }
+
     void FixedUpdate()
     {
         if(Vector3.Distance(transform.position, getAdjustedZAxis()) > DeadZone)
@@ -28,7 +37,7 @@ public class CameraBehaviour : MonoBehaviour {
 
     private void FollowTarget()
     {
-        transform.position = Vector3.Lerp(transform.position, getAdjustedZAxis(), cameraFollowSpeed * Time.deltaTime);
+        transform.position = Vector3.Slerp(transform.position, getAdjustedZAxis(), cameraFollowSpeed * Time.deltaTime);
     }
     
     public Transform GetCameraTarget()

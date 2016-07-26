@@ -102,4 +102,9 @@ public class EntityValues : MonoBehaviour {
     {
         return currentHealth;
     }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
 }

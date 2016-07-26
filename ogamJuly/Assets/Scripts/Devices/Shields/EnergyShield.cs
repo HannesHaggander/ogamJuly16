@@ -86,4 +86,14 @@ public class EnergyShield : BaseShield {
         Sprite tstSprite = Resources.Load<Sprite>(sprite_path);
         sprite_component.sprite = tstSprite;
     }
+
+    public override int GetCurrentShield()
+    {
+        return shield_currValue;
+    }
+
+    public override int GetMaxShield()
+    {
+        return shield_maxValue;
+    }
 }

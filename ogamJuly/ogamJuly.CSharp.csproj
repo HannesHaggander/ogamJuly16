@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AI\Enemy\AttackPlayer.cs" />
     <Compile Include="Assets\Scripts\Devices\Engines\BaseShipEngine.cs" />
     <Compile Include="Assets\Scripts\Devices\Engines\EngineNormal.cs" />
     <Compile Include="Assets\Scripts\Devices\Radar\RadarObject.cs" />
@@ -77,10 +78,12 @@
     <Compile Include="Assets\Scripts\Devices\Shields\EnergyShield.cs" />
     <Compile Include="Assets\Scripts\Devices\Weapons\BaseWeapon.cs" />
     <Compile Include="Assets\Scripts\Devices\Weapons\LazerRepeater.cs" />
-    <Compile Include="Assets\Scripts\Events\AbandonedShip.cs" />
+    <Compile Include="Assets\Scripts\Events\AbandonedShipEvent\AbandonedShip.cs" />
+    <Compile Include="Assets\Scripts\Events\AbandonedShipEvent\EventSpawnPirateShip.cs" />
     <Compile Include="Assets\Scripts\Events\BaseEventsUtils.cs" />
     <Compile Include="Assets\Scripts\Events\RelayBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
+    <Compile Include="Assets\Scripts\General\Inventory.cs" />
     <Compile Include="Assets\Scripts\General\ParallaxScrolling.cs" />
     <Compile Include="Assets\Scripts\Ship\EntValEnemy.cs" />
     <Compile Include="Assets\Scripts\Ship\EntValModule.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Assets\Scripts\Space\Generators\GenerateEvents.cs" />
     <Compile Include="Assets\Scripts\Space\Generators\GenerateGalaxy.cs" />
     <Compile Include="Assets\Scripts\Space\Generators\GeneratedObjs.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UserInterface.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
