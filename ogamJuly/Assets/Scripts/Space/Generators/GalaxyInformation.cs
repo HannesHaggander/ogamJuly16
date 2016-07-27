@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GalaxyInformation : MonoBehaviour
@@ -26,6 +27,7 @@ public class GalaxyInformation : MonoBehaviour
             {
                 GalaxyCleared = true;
                 Debug.Log("Entering " + gameObject.name);
+                SceneManager.LoadScene("EventsMap", LoadSceneMode.Single);           
             }
         }
     }

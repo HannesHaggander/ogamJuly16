@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GenerateGalaxy : MonoBehaviour
@@ -17,6 +18,11 @@ public class GenerateGalaxy : MonoBehaviour
     public Transform currentGalaxy;
 
     Vector3 suggestedSpawn = Vector3.zero;
+
+    void OnLevelWasLoaded(int level)
+    {
+        gameObject.SetActive(SceneManager.GetActiveScene().Equals("GalaxyMap"));   
+    }
 
     void Start()
     {

@@ -11,7 +11,7 @@ public class GenerateEvents : MonoBehaviour {
     private float eventXDistance = 500;
 
     [SerializeField]
-    private int maxEvents = 4;
+    private int maxEvents = 10;
 	
     void Start ()
     {
@@ -30,12 +30,14 @@ public class GenerateEvents : MonoBehaviour {
         GameObject endRelay = (GameObject)Instantiate(relayToSpawn, endRelayPosition, Quaternion.identity);
         endRelay.AddComponent<RelayBehaviour>();
         endRelay.name = "Relay_End";
+        endRelay.transform.parent = EventContainer;
 
         Vector3 startToEnd = endRelayPosition - Vector3.zero;
         float angle = Mathf.Atan2(startToEnd.y, startToEnd.x) * Mathf.Rad2Deg;
         Quaternion rotToEnd = Quaternion.AngleAxis(angle, Vector3.forward);
         GameObject startRelay = (GameObject)Instantiate(relayToSpawn, Vector3.zero, rotToEnd);
         startRelay.name = "Relay_Start";
+        startRelay.transform.parent = EventContainer;
     }
 
     void GenerateRandomEvents()

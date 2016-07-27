@@ -8,7 +8,6 @@ public class RadarObject : MonoBehaviour {
     GeneratedObjs GObjs = null;
     private bool GotChildren = false;
 
-
     private string showRadarAxis = "ShowRadar";
 
     void Start ()
@@ -43,8 +42,6 @@ public class RadarObject : MonoBehaviour {
         {
             ToggleRadar(Input.GetButton(showRadarAxis));
         }
-
-
     }
 
     void ToggleRadar(bool b)

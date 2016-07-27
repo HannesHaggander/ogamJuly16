@@ -56,7 +56,13 @@ public class CameraBehaviour : MonoBehaviour {
         {
             if (cameraTarget)
             {
-                cameraFollowSpeed = cameraTarget.root.GetComponent<Movement>().GetShipSpeed() / 2;
+                if (cameraTarget.root.GetComponent<Movement>())
+                {
+                    cameraFollowSpeed = cameraTarget.root.GetComponent<Movement>().GetShipSpeed() / 2;
+                } else
+                {
+                    cameraFollowSpeed = 0.2f;
+                }
                 FollowTarget();
             }
         }
