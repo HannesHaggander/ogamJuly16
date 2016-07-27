@@ -6,16 +6,22 @@ public class GenerateGalaxy : MonoBehaviour
     private int galaxiesToGenerate = 10;
     private bool isGenerated = false;
     private string pathToGalaxiy = "Prefabs/SpaceObjects/Galaxy";
+    private string miniatureShip = "Prefabs/Ships/MiniatureModels/paintShip";
     private float galaxySpawnDistanceMin = 2;
     private float galaxySpawnDistanceMax = 5;
     private float galaxyPaddingDistance = 3;
-
+    
     private GameObject[] SpawnedGalaxies;
+    private GameObject SpawnedMiniatureShip = null;
+    private Vector3 miniatureShipMoveTo = Vector3.zero;
+    public Transform currentGalaxy;
 
     Vector3 suggestedSpawn = Vector3.zero;
 
     void Start()
     {
+        SpawnedMiniatureShip = (GameObject) Instantiate(Resources.Load(miniatureShip), Vector3.zero, Quaternion.identity);
+        SpawnedMiniatureShip.transform.parent = transform;
         if (isGenerated)
         {
             PaintGalaxy();
@@ -25,6 +31,14 @@ public class GenerateGalaxy : MonoBehaviour
             CreateGalaxy();
         }
     }   
+
+    void FixedUpdate()
+    {
+        if (SpawnedMiniatureShip)
+        {
+            SpawnedMiniatureShip.transform.position = Vector3.Slerp(SpawnedMiniatureShip.transform.position, miniatureShipMoveTo, 0.2f);
+        }
+    }
 
 
     /// <summary>
@@ -37,11 +51,10 @@ public class GenerateGalaxy : MonoBehaviour
         for (int i = 0; i < galaxiesToGenerate; i++)
         {
             Vector3 OKSpawn = GetOkPosition();
-            
-
             GameObject tmpGalaxy = (GameObject) Instantiate(galaxyPrefab, OKSpawn, Quaternion.identity);
             if (i == 0)
             {
+                currentGalaxy = tmpGalaxy.transform;
                 tmpGalaxy.transform.position = Vector3.zero;
                 tmpGalaxy.GetComponent<GalaxyInformation>().Selected = true;
             }
@@ -128,15 +141,25 @@ public class GenerateGalaxy : MonoBehaviour
         {
             return;
         }
+        if (!currentGalaxy.GetComponent<GalaxyInformation>().CheckIfConnected(param))
+        {
+            return;
+        }
+
         foreach(GameObject g in SpawnedGalaxies)
         {
             g.GetComponent<GalaxyInformation>().Selected = false;
             foreach(Transform t in g.transform)
             {
-                Destroy(t.gameObject);
+                t.gameObject.SetActive(false);
             }
         }
-
+        miniatureShipMoveTo = param.transform.position;
         param.GetComponent<GalaxyInformation>().Selected = true;
+        currentGalaxy = param.transform;
+        foreach (Transform t in param.transform)
+        {
+            t.gameObject.SetActive(true);
+        }
     }
 }

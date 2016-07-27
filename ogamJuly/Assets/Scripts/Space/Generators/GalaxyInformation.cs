@@ -6,6 +6,8 @@ public class GalaxyInformation : MonoBehaviour
     [SerializeField]
     public ArrayList GalaxyConnections = new ArrayList();
     public bool Selected = false;
+    public bool GalaxyCleared = false;
+
 
     private LineRenderer[] galaxyTravelLines = new LineRenderer[0];
 
@@ -13,12 +15,18 @@ public class GalaxyInformation : MonoBehaviour
     string materialBluePath = "Prefabs/Materials/LightBlue";
 
     string selectKey = "leftMouseBtn";
+    string interactKey = "Interact";
 
     void Update()
     {
         if (Selected)
         {
             UpdateTravelLines();
+            if(Input.GetButtonDown(interactKey) && !GalaxyCleared)
+            {
+                GalaxyCleared = true;
+                Debug.Log("Entering " + gameObject.name);
+            }
         }
     }
 
@@ -83,8 +91,7 @@ public class GalaxyInformation : MonoBehaviour
         {
             if (!Selected)
             {
-                transform.root.GetComponent<GenerateGalaxy>().SetSelected(gameObject);
-                Selected = true;
+                transform.parent.GetComponent<GenerateGalaxy>().SetSelected(gameObject);
             }
         }
     }
