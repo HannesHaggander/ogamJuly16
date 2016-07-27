@@ -5,9 +5,14 @@ public class GalaxyInformation : MonoBehaviour
 {
     [SerializeField]
     public ArrayList GalaxyConnections = new ArrayList();
-    public bool Selected = true;
+    public bool Selected = false;
 
     private LineRenderer[] galaxyTravelLines = new LineRenderer[0];
+
+    string materialGrayPath = "Prefabs/Materials/Gray";
+    string materialBluePath = "Prefabs/Materials/LightBlue";
+
+    string selectKey = "leftMouseBtn";
 
     void Update()
     {
@@ -46,6 +51,8 @@ public class GalaxyInformation : MonoBehaviour
             LineRenderer tmpLR =  tmpEmpty.GetComponent<LineRenderer>();
             tmpLR.SetPosition(0, transform.position);
             tmpLR.SetPosition(1, g.transform.position);
+            Material diffureMatt = new Material(Shader.Find("Unlit/Texture"));
+            tmpLR.material = diffureMatt;
             galaxyTravelLines[counter] = tmpLR;
         }
     }
@@ -68,5 +75,17 @@ public class GalaxyInformation : MonoBehaviour
     public ArrayList CurrentConnections()
     {
         return GalaxyConnections;
+    }
+
+    public void OnMouseOver()
+    {
+        if (Input.GetButtonDown(selectKey))
+        {
+            if (!Selected)
+            {
+                transform.root.GetComponent<GenerateGalaxy>().SetSelected(gameObject);
+                Selected = true;
+            }
+        }
     }
 }

@@ -37,18 +37,20 @@ public class GenerateGalaxy : MonoBehaviour
         for (int i = 0; i < galaxiesToGenerate; i++)
         {
             Vector3 OKSpawn = GetOkPosition();
-            if (i == 0)
-            {
-                OKSpawn = Vector3.zero;
-            }
+            
 
             GameObject tmpGalaxy = (GameObject) Instantiate(galaxyPrefab, OKSpawn, Quaternion.identity);
+            if (i == 0)
+            {
+                tmpGalaxy.transform.position = Vector3.zero;
+                tmpGalaxy.GetComponent<GalaxyInformation>().Selected = true;
+            }
+
             SpawnedGalaxies[i] = tmpGalaxy;
             SpawnedGalaxies[i].transform.parent = transform;
             SpawnedGalaxies[i].name = "Galaxy_" + i.ToString();
         }
         MakeConnections();
-
     }
 
     /// <summary>
@@ -65,22 +67,20 @@ public class GenerateGalaxy : MonoBehaviour
             foreach (GameObject g in SpawnedGalaxies)
             {
                 gi = g.GetComponent<GalaxyInformation>();
-                if(gi.CurrentConnections().Capacity == 0)
+                for(int i = 0; i < 3; i++)
                 {
-                    GameObject possibleSpawn = SpawnedGalaxies[Random.Range(0, SpawnedGalaxies.Length - 1)];
+                    GameObject possibleSpawn = SpawnedGalaxies[Random.Range(0, SpawnedGalaxies.Length)];
+                    while (gi.CheckIfConnected(possibleSpawn))
+                    {
+                        possibleSpawn = SpawnedGalaxies[Random.Range(0, SpawnedGalaxies.Length)];
+                    }
+
                     gi.SetConnection(possibleSpawn);
                 }
+
             }
         }
-        foreach(GameObject g in SpawnedGalaxies)
-        {
-            Debug.Log("Connected to " + g.name + ": ");
-            ArrayList tmparrlist = g.GetComponent<GalaxyInformation>().CurrentConnections();
-            foreach(GameObject k in tmparrlist)
-            {
-                Debug.Log(k.transform.name);
-            }
-        }
+        isGenerated = true;
     }
 
     /// <summary>
@@ -120,5 +120,23 @@ public class GenerateGalaxy : MonoBehaviour
         {
             Instantiate(g, g.transform.position, g.transform.rotation);
         }
+    }
+
+    public void SetSelected(GameObject param)
+    {
+        if(!param)
+        {
+            return;
+        }
+        foreach(GameObject g in SpawnedGalaxies)
+        {
+            g.GetComponent<GalaxyInformation>().Selected = false;
+            foreach(Transform t in g.transform)
+            {
+                Destroy(t.gameObject);
+            }
+        }
+
+        param.GetComponent<GalaxyInformation>().Selected = true;
     }
 }

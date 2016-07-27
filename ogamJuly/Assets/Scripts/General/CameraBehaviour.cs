@@ -7,26 +7,62 @@ public class CameraBehaviour : MonoBehaviour {
     private float cameraFollowSpeed = 1;
     public float DeadZone = 1;
 
+    public bool followTarget = false;
+    public bool mouseInputs = false;
+
     Vector3 alwayszero;
 
+    public string horizontalAxis = "Horizontal";
+    public string verticalAxis = "Vertical";
+    private Vector3 tmpAxisMovement;
+
     void Update()
+    {
+        if (followTarget)
+        {
+            followTargetMovement();
+        }
+        if (mouseInputs)
+        {
+            if(Mathf.Abs(Input.GetAxis(horizontalAxis)) > 0 ||
+                Mathf.Abs(Input.GetAxis(verticalAxis)) > 0)
+            {
+                tmpAxisMovement = transform.position;
+                tmpAxisMovement.x += Input.GetAxis(horizontalAxis);
+                tmpAxisMovement.y += Input.GetAxis(verticalAxis);
+                transform.position = tmpAxisMovement;
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(followTarget)
+        {
+            followTargetFixed();
+        }
+    }
+
+    private void followTargetMovement()
     {
         alwayszero = transform.position;
         alwayszero.z = -10;
         transform.position = alwayszero;
     }
 
-    void FixedUpdate()
+    private void followTargetFixed()
     {
-        if(Vector3.Distance(transform.position, getAdjustedZAxis()) > DeadZone)
+        if (Vector3.Distance(transform.position, getAdjustedZAxis()) > DeadZone)
         {
             if (cameraTarget)
             {
-                cameraFollowSpeed = cameraTarget.root.GetComponent<Movement>().GetShipSpeed()/2;
+                cameraFollowSpeed = cameraTarget.root.GetComponent<Movement>().GetShipSpeed() / 2;
                 FollowTarget();
             }
         }
     }
+
+
 
     Vector3 getAdjustedZAxis()
     {
