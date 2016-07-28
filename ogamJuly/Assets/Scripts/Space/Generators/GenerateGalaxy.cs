@@ -19,11 +19,6 @@ public class GenerateGalaxy : MonoBehaviour
 
     Vector3 suggestedSpawn = Vector3.zero;
 
-    void OnLevelWasLoaded(int level)
-    {
-        gameObject.SetActive(SceneManager.GetActiveScene().Equals("GalaxyMap"));   
-    }
-
     void Start()
     {
         SpawnedMiniatureShip = (GameObject) Instantiate(Resources.Load(miniatureShip), Vector3.zero, Quaternion.identity);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class CameraBehaviour : MonoBehaviour {
@@ -20,7 +21,17 @@ public class CameraBehaviour : MonoBehaviour {
     {
         if (followTarget)
         {
-            followTargetMovement();
+            if (cameraTarget)
+            {
+                followTargetMovement();
+            } else
+            {
+                GameObject tmpGO = GameObject.Find("CameraTarget");
+                if (tmpGO)
+                {
+                    cameraTarget = tmpGO.transform;
+                }
+            }
         }
         if (mouseInputs)
         {
@@ -42,6 +53,10 @@ public class CameraBehaviour : MonoBehaviour {
             followTargetFixed();
         }
     }
+
+    /// -------------------------------------
+    ///
+
 
     private void followTargetMovement()
     {
@@ -68,11 +83,13 @@ public class CameraBehaviour : MonoBehaviour {
         }
     }
 
-
-
     Vector3 getAdjustedZAxis()
     {
-        Vector3 tmpVec = cameraTarget.transform.position;
+        Vector3 tmpVec = transform.position;
+        if (cameraTarget)
+        {
+            tmpVec = cameraTarget.transform.position;
+        }
         tmpVec.z = transform.position.z;
         return tmpVec;
     }

@@ -94,6 +94,7 @@ public class Movement : MonoBehaviour {
     {
         if (!tmpBSE)
         {
+            Debug.Log("Engine not found");
             speed = 1;
             tmpBSE = GetEngine();
         }
@@ -136,8 +137,17 @@ public class Movement : MonoBehaviour {
                 if (engine)
                 {
                     return engine;
+                } else
+                {
+                    Debug.Log("Missing engine on " + name);
                 }
+            } else
+            {
+                Debug.Log("Missing engine from mods on " + gameObject.name);
             }
+        } else
+        {
+            Debug.Log("Missing mods in movement on " + gameObject.name);
         }
         return null;
     }

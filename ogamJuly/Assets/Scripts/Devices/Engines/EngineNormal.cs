@@ -3,9 +3,9 @@ using System.Collections;
 
 public class EngineNormal : BaseShipEngine {
 
-    private int CrusingSpeed = 5;
-    private int BoostSpeed = 20;
-    private float TurnRate = 3;
+    public int CrusingSpeed = 5;
+    public int BoostSpeed = 20;
+    public float TurnRate = 3;
 
     private ParticleSystem engineParticles;
 
