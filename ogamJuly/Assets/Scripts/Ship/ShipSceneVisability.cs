@@ -17,6 +17,11 @@ public class ShipSceneVisability : MonoBehaviour {
         SpawnShip();
     }
 
+    void OnEnable()
+    {
+        SpawnShip();
+    }
+
     void SpawnShip()
     {
         if (GameObject.FindGameObjectWithTag("Player"))
