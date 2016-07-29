@@ -3,8 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ShipSceneVisability : MonoBehaviour {
-
-    public GameObject ShipObject;
+    
     public string SpacePath = "Prefabs/Ships/PlayerShip";
 
     void OnLevelWasLoaded(int i)
@@ -35,11 +34,18 @@ public class ShipSceneVisability : MonoBehaviour {
             if (go)
             {
                 Instantiate(go, Vector3.zero, Quaternion.identity);
+                EquipShip(go);
             }
             else
             {
                 Debug.Log("Failed loading ship " + SpacePath);
             }
         }
+    }
+
+    public void EquipShip(GameObject spaceShip)
+    {
+        EquipedDevices eqD = spaceShip.transform.root.GetComponent<EquipedDevices>();
+        eqD.LoadShipPrefabs();
     }
 }

@@ -72,12 +72,15 @@
     <Compile Include="Assets\Scripts\Devices\Shields\EnergyShield.cs" />
     <Compile Include="Assets\Scripts\Devices\Weapons\BaseWeapon.cs" />
     <Compile Include="Assets\Scripts\Devices\Weapons\LazerRepeater.cs" />
+    <Compile Include="Assets\Scripts\Devices\Weapons\SeekerLauncher.cs" />
+    <Compile Include="Assets\Scripts\Devices\Weapons\SeekerMissile.cs" />
     <Compile Include="Assets\Scripts\Events\AbandonedShipEvent\AbandonedShip.cs" />
     <Compile Include="Assets\Scripts\Events\AbandonedShipEvent\EventSpawnPirateShip.cs" />
     <Compile Include="Assets\Scripts\Events\BaseEventsUtils.cs" />
     <Compile Include="Assets\Scripts\Events\RelayBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Scripts\General\EquipedDevices.cs" />
     <Compile Include="Assets\Scripts\General\GalaxyContainerVisability.cs" />
     <Compile Include="Assets\Scripts\General\Inventory.cs" />
     <Compile Include="Assets\Scripts\General\MasterObjectController.cs" />

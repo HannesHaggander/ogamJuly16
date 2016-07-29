@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Include 
+/// 1. FireWeapon
+/// 2.
+/// </summary>
 public class BaseWeapon : MonoBehaviour {
 
     public string fireSlot = "FireWeapon";
@@ -32,10 +37,7 @@ public class BaseWeapon : MonoBehaviour {
     /// <param name="i"> index of the weapon</param>
     void FirePressedWeapon(int i)
     {
-        if (!transform.root.tag.Equals("Player"))
-        {
-            return;
-        }
+        if (!transform.root.tag.Equals("Player")){ return; }
         if (shipModules)
         {
             GameObject go = shipModules.GetModuleWeapon(i-1);
@@ -76,10 +78,10 @@ public class BaseWeapon : MonoBehaviour {
         }
     }
 
-    protected void InitiateCoolDown()
+    protected void InitiateCoolDown(float wpnCD)
     {
         onCoolDown = true;
-        Invoke("ResetCoolDown", weaponCooldown);
+        Invoke("ResetCoolDown", wpnCD);
     }
 
     private void ResetCoolDown()

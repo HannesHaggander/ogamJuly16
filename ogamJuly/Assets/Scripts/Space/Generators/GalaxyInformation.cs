@@ -12,9 +12,6 @@ public class GalaxyInformation : MonoBehaviour
 
     private LineRenderer[] galaxyTravelLines = new LineRenderer[0];
 
-    string materialGrayPath = "Prefabs/Materials/Gray";
-    string materialBluePath = "Prefabs/Materials/LightBlue";
-
     string selectKey = "leftMouseBtn";
     string interactKey = "Interact";
 

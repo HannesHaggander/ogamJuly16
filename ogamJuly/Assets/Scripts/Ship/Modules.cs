@@ -86,4 +86,55 @@ public class Modules : MonoBehaviour {
         }
         return null;
     }
+
+    public void ChangeWeapon(int index, GameObject newWeapon)
+    {
+        if(index > WeaponSlots.Length)
+        {            
+            Debug.Log(index + " is larger than the array " + WeaponSlots.Length);
+            return;
+        }
+        if (!newWeapon){ Debug.Log("Weapon to insert is null"); return; }
+
+        GameObject nwep = Instantiate(newWeapon);
+        SetItemToSlot(WeaponSlots[index].transform, nwep);
+    }
+
+    public void ChangeShield(int index, GameObject newShield)
+    {
+        if (index > ShieldSlots.Length)
+        {
+            Debug.Log(index + " is larger than the array " + ShieldSlots.Length);
+            return;
+        }
+        if (!newShield) { Debug.Log("Shield to insert is null"); return; }
+
+        GameObject nShield = Instantiate(newShield);
+        SetItemToSlot(ShieldSlots[index].transform, nShield);
+    }
+
+    public void ChangeEngine(int index, GameObject newEngine)
+    {
+        if (index > EngineSlots.Length)
+        {
+            Debug.Log(index + " is larger than the array " + EngineSlots.Length);
+            return;
+        }
+        if (!newEngine) { Debug.Log("Engine to insert is null"); return; }
+
+        GameObject nEng = Instantiate(newEngine);
+        SetItemToSlot(EngineSlots[index].transform, nEng);
+    }
+
+    private void SetItemToSlot(Transform parentSlot, GameObject newObj)
+    {
+        foreach(Transform t in parentSlot)
+        {
+            Debug.Log("Removing " + t.name);
+            Destroy(t.gameObject);
+        }
+
+        newObj.transform.parent = parentSlot;
+        //newObj.transform.localPosition = Vector3.zero;
+    }
 }

@@ -33,7 +33,7 @@ public class LazerRepeater : BaseWeapon {
         {
             return;
         }
-        base.InitiateCoolDown();
+        base.InitiateCoolDown(LazerRepeaterCoolDown);
         Vector3 tmpEndPos;
         if(Physics.Linecast(shootFromPos.position, shootToPos.position, out rch))
         {

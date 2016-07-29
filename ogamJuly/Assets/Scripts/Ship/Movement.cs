@@ -94,7 +94,7 @@ public class Movement : MonoBehaviour {
     {
         if (!tmpBSE)
         {
-            Debug.Log("Engine not found");
+            //Debug.Log("Engine not found");
             speed = 1;
             tmpBSE = GetEngine();
         }
@@ -139,7 +139,7 @@ public class Movement : MonoBehaviour {
                     return engine;
                 } else
                 {
-                    Debug.Log("Missing engine on " + name);
+                    //Debug.Log("Missing engine on " + name);
                 }
             } else
             {
