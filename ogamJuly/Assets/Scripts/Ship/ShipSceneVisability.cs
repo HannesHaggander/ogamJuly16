@@ -29,7 +29,6 @@ public class ShipSceneVisability : MonoBehaviour {
         if (SceneManager.GetActiveScene().name.Equals("EventsMap"))
         {
             PlayerInformationData pid = transform.root.GetComponent<PlayerInformationData>();
-            Debug.Log("oaskdoaksd: >>" +  transform.root.name);
             GameObject go = null;
             if (pid)
             {

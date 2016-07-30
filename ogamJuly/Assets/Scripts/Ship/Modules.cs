@@ -8,6 +8,23 @@ public class Modules : MonoBehaviour {
     public GameObject[] EngineSlots;
     public GameObject[] MiscSlots;
 
+    private PlayerInformationData playerinfodata;
+
+    void Start()
+    {
+        findpid();
+    }
+
+    void OnEnable()
+    {
+        findpid();
+    }
+    
+    void findpid()
+    {
+        if (!playerinfodata) { playerinfodata = GameObject.Find("MasterObject").GetComponent<PlayerInformationData>(); }
+    }
+
     /// <summary>
     /// finds a shield that is capable of blocking shots
     /// </summary>
@@ -102,6 +119,8 @@ public class Modules : MonoBehaviour {
 
         GameObject nwep = Instantiate(newWeapon, transform.position, Quaternion.identity) as GameObject;
         SetItemToSlot(WeaponSlots[index].transform, nwep);
+        if (playerinfodata) { playerinfodata.SetPlayerInformation('w', index, newWeapon); }
+        else { Debug.Log("missing playerinfodata"); }
     }
 
     public void ChangeShield(int index, GameObject newShield)
@@ -115,6 +134,8 @@ public class Modules : MonoBehaviour {
 
         GameObject nShield = Instantiate(newShield, transform.position, Quaternion.identity) as GameObject;
         SetItemToSlot(ShieldSlots[index].transform, nShield);
+        if (playerinfodata) { playerinfodata.SetPlayerInformation('s', index, newShield); }
+        else { Debug.Log("missing playerinfodata"); }
     }
 
     public void ChangeEngine(int index, GameObject newEngine)
@@ -128,6 +149,9 @@ public class Modules : MonoBehaviour {
 
         GameObject nEng = Instantiate(newEngine, transform.position, Quaternion.identity) as GameObject;
         SetItemToSlot(EngineSlots[index].transform, nEng);
+
+        if (playerinfodata) { playerinfodata.SetPlayerInformation('e', index, newEngine); }
+        else { Debug.Log("missing playerinfodata"); }
     }
 
     private void SetItemToSlot(Transform parentSlot, GameObject newObj)

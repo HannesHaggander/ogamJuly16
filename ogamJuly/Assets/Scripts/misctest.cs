@@ -17,11 +17,6 @@ public class misctest : MonoBehaviour {
             GameObject ship = ssv.GetActiveShip();
             Modules mods = ship.transform.root.GetComponent<Modules>();
             mods.ChangeWeapon(0, missileWeapon);
-            PlayerInformationData pid = transform.root.GetComponent<PlayerInformationData>();
-            if (pid)
-            {
-                pid.SetPlayerInformation('w', 0, missileWeapon);
-            }
         }
     }
 }

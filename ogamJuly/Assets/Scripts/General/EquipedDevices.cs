@@ -46,8 +46,7 @@ public class EquipedDevices : MonoBehaviour {
         {
             if (WeaponSlotsPaths[i].Equals("")) { Debug.Log("Weapon path is not set"); return; }
             GameObject wep = Resources.Load<GameObject>(basePath + WeaponSlotsPaths[i]);
-
-            // JUST NU ÄR DENNA NULL, FIXA!
+            
             if (wep)
             {
                 mods.ChangeWeapon(i, wep);

@@ -15,7 +15,6 @@ public class PlayerInformationData : MonoBehaviour {
 
     void OnLevelWasLoaded(int i)
     { 
-        Debug.Log("Loaded " + SceneManager.GetActiveScene().name);
         if (!ShipToUse && SceneManager.GetActiveScene().name.Equals("GalaxyMap"))
         {
             ShipSceneVisability ssv = ShipInformation.GetComponent<ShipSceneVisability>();
@@ -41,7 +40,6 @@ public class PlayerInformationData : MonoBehaviour {
         s = s.Remove(s.IndexOf("."));
         s = s.Substring("Prefabs/Devices/".Length);
 
-        Debug.Log("oiasjdoiajsd >>" + s);
         switch (c)
         {
             case 'w': weaponPaths[index] = s; break;
@@ -49,7 +47,6 @@ public class PlayerInformationData : MonoBehaviour {
             case 'e': enginePaths[index] = s; break;
             default: Debug.Log("Missing in switch " + c); break;
         }
-        Debug.Log("Changed to " + g.name);
     }
 
     public GameObject getShip()
