@@ -138,7 +138,6 @@ public class Modules : MonoBehaviour {
             Debug.Log("Removing " + t.name);
             Destroy(t.gameObject);
         }
-        Debug.Log("Setting " + newObj.name + " as child to " + parentSlot.name);
         if (newObj && parentSlot)
         {
             newObj.transform.SetParent(parentSlot.transform);

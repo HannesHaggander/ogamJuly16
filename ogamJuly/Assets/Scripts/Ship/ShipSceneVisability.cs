@@ -4,7 +4,8 @@ using System.Collections;
 
 public class ShipSceneVisability : MonoBehaviour {
     
-    public string SpacePath = "Prefabs/Ships/PlayerShip";
+    public string SpacePath = "BaseModels/ShipBase_Explorer";
+    public string basePath = "Prefabs/Ships/";
 
     void OnLevelWasLoaded(int i)
     {
@@ -18,6 +19,7 @@ public class ShipSceneVisability : MonoBehaviour {
 
     void OnEnable()
     {
+        Debug.Log("Spawning ship");
         SpawnShip();
     }
 
@@ -29,7 +31,7 @@ public class ShipSceneVisability : MonoBehaviour {
         }
         if (SceneManager.GetActiveScene().name.Equals("EventsMap"))
         {
-            GameObject go = (GameObject)Resources.Load(SpacePath);
+            GameObject go = (GameObject)Resources.Load(basePath + SpacePath);
             if (go)
             {
                 Instantiate(go, Vector3.zero, Quaternion.identity);
@@ -37,7 +39,7 @@ public class ShipSceneVisability : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Failed loading ship " + SpacePath);
+                Debug.Log("Failed loading ship " + basePath + SpacePath);
             }
         }
     }
