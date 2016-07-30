@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 using System.Collections;
 
 public class MasterObjectController : MonoBehaviour {
 
     public GameObject GalaxyContainer;
     public GameObject PlayerPrefabs;
+    public GameObject PlayerInfo;
 
+    public string UsedShipPath = "Assets/Resources/Prefabs/Misc/tst.prefab";
 
     public bool controlDone = false;
     public bool setupDone = false;
+
+    ShipSceneVisability ssv;
 
     void Start()
     {
@@ -18,6 +23,8 @@ public class MasterObjectController : MonoBehaviour {
             Debug.Log("Missing MasterController settings, please insert");
             return;
         }
+
+        ssv = GetComponentInChildren<ShipSceneVisability>();
         ControllScenes();
     }
 
@@ -34,6 +41,10 @@ public class MasterObjectController : MonoBehaviour {
     void OnLevelWasLoaded(int i)
     {
         ControllScenes();
+        if (SceneManager.GetActiveScene().name.Equals("GalaxyMap"))
+        {
+            
+        }
     }
 
     void ControllScenes()

@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 using System.Collections;
 
 public class ShipSceneVisability : MonoBehaviour {
     
     public string SpacePath = "BaseModels/ShipBase_Explorer";
     public string basePath = "Prefabs/Ships/";
-
-    void OnLevelWasLoaded(int i)
-    {
-        //SpawnShip();
-    }
+    public GameObject spawnedShip = null;
 
     void Start()
     {
@@ -31,11 +28,17 @@ public class ShipSceneVisability : MonoBehaviour {
         }
         if (SceneManager.GetActiveScene().name.Equals("EventsMap"))
         {
-            GameObject go = (GameObject)Resources.Load(basePath + SpacePath);
+            PlayerInformationData pid = transform.root.GetComponent<PlayerInformationData>();
+            Debug.Log("oaskdoaksd: >>" +  transform.root.name);
+            GameObject go = null;
+            if (pid)
+            {
+                go = pid.getShip();
+            } else { Debug.Log("Missing pid"); }
+
             if (go)
             {
-                Instantiate(go, Vector3.zero, Quaternion.identity);
-                EquipShip(go);
+                spawnedShip = Instantiate(go, Vector3.zero, Quaternion.identity) as GameObject;
             }
             else
             {
@@ -44,8 +47,13 @@ public class ShipSceneVisability : MonoBehaviour {
         }
     }
 
-    public void EquipShip(GameObject spaceShip)
+    public GameObject GetActiveShip()
     {
-        EquipedDevices eqD = spaceShip.transform.root.GetComponent<EquipedDevices>();
+        return spawnedShip;
+    }
+
+    public string GetSpacePath()
+    {
+        return (basePath + SpacePath);
     }
 }

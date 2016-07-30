@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\General\Inventory.cs" />
     <Compile Include="Assets\Scripts\General\MasterObjectController.cs" />
     <Compile Include="Assets\Scripts\General\ParallaxScrolling.cs" />
+    <Compile Include="Assets\Scripts\General\PlayerInformationData.cs" />
     <Compile Include="Assets\Scripts\Ship\EntValEnemy.cs" />
     <Compile Include="Assets\Scripts\Ship\EntValModule.cs" />
     <Compile Include="Assets\Scripts\Ship\EntityValues.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\Scripts\Space\Generators\GeneratedObjs.cs" />
     <Compile Include="Assets\Scripts\UserInterface\Buttons\Menu\MenuButtons.cs" />
     <Compile Include="Assets\Scripts\UserInterface\UserInterface.cs" />
+    <Compile Include="Assets\Scripts\misctest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Materials\UnlitShader.shader" />
