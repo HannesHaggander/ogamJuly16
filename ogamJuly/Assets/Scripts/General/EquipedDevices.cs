@@ -12,7 +12,6 @@ public class EquipedDevices : MonoBehaviour {
 
     void Start()
     {
-        LoadShipPrefabs();
         mods = transform.root.GetComponent<Modules>();
         WeaponSlotsPaths = new string[mods.WeaponSlots.Length];
         ShieldSlotsPaths = new string[mods.ShieldSlots.Length];
@@ -22,6 +21,7 @@ public class EquipedDevices : MonoBehaviour {
     void OnEnable()
     {
         mods = transform.root.GetComponent<Modules>();
+        Debug.Log("Loading from prefabs from " + gameObject.name);
         LoadShipPrefabs();
     }
 

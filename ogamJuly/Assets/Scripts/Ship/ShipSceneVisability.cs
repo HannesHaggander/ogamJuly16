@@ -8,12 +8,12 @@ public class ShipSceneVisability : MonoBehaviour {
 
     void OnLevelWasLoaded(int i)
     {
-        SpawnShip();
+        //SpawnShip();
     }
 
     void Start()
     {
-        SpawnShip();
+        //SpawnShip();
     }
 
     void OnEnable()
@@ -29,7 +29,6 @@ public class ShipSceneVisability : MonoBehaviour {
         }
         if (SceneManager.GetActiveScene().name.Equals("EventsMap"))
         {
-            Debug.Log("Spawning ship");
             GameObject go = (GameObject)Resources.Load(SpacePath);
             if (go)
             {
@@ -46,6 +45,5 @@ public class ShipSceneVisability : MonoBehaviour {
     public void EquipShip(GameObject spaceShip)
     {
         EquipedDevices eqD = spaceShip.transform.root.GetComponent<EquipedDevices>();
-        eqD.LoadShipPrefabs();
     }
 }

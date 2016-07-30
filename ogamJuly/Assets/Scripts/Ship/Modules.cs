@@ -87,6 +87,10 @@ public class Modules : MonoBehaviour {
         return null;
     }
 
+
+    //---------------------------------------------------------
+
+
     public void ChangeWeapon(int index, GameObject newWeapon)
     {
         if(index > WeaponSlots.Length)
@@ -96,7 +100,7 @@ public class Modules : MonoBehaviour {
         }
         if (!newWeapon){ Debug.Log("Weapon to insert is null"); return; }
 
-        GameObject nwep = Instantiate(newWeapon);
+        GameObject nwep = Instantiate(newWeapon, transform.position, Quaternion.identity) as GameObject;
         SetItemToSlot(WeaponSlots[index].transform, nwep);
     }
 
@@ -109,7 +113,7 @@ public class Modules : MonoBehaviour {
         }
         if (!newShield) { Debug.Log("Shield to insert is null"); return; }
 
-        GameObject nShield = Instantiate(newShield);
+        GameObject nShield = Instantiate(newShield, transform.position, Quaternion.identity) as GameObject;
         SetItemToSlot(ShieldSlots[index].transform, nShield);
     }
 
@@ -122,19 +126,25 @@ public class Modules : MonoBehaviour {
         }
         if (!newEngine) { Debug.Log("Engine to insert is null"); return; }
 
-        GameObject nEng = Instantiate(newEngine);
+        GameObject nEng = Instantiate(newEngine, transform.position, Quaternion.identity) as GameObject;
         SetItemToSlot(EngineSlots[index].transform, nEng);
     }
 
     private void SetItemToSlot(Transform parentSlot, GameObject newObj)
     {
+        newObj.SetActive(false);
         foreach(Transform t in parentSlot)
         {
             Debug.Log("Removing " + t.name);
             Destroy(t.gameObject);
         }
-
-        newObj.transform.parent = parentSlot;
-        //newObj.transform.localPosition = Vector3.zero;
+        Debug.Log("Setting " + newObj.name + " as child to " + parentSlot.name);
+        if (newObj && parentSlot)
+        {
+            newObj.transform.SetParent(parentSlot.transform);
+        }
+        newObj.transform.localPosition = Vector3.zero;
+        newObj.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        newObj.SetActive(true);
     }
 }

@@ -23,7 +23,6 @@ public class GalaxyInformation : MonoBehaviour
             if(Input.GetButtonDown(interactKey) && !GalaxyCleared)
             {
                 GalaxyCleared = true;
-                Debug.Log("Entering " + gameObject.name);
                 SceneManager.LoadScene("EventsMap", LoadSceneMode.Single);           
             }
         }
