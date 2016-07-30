@@ -19,7 +19,7 @@ public class ShipSceneVisability : MonoBehaviour {
 
     void OnEnable()
     {
-        Debug.Log("Spawning ship");
+//        Debug.Log("Spawning ship");
         SpawnShip();
     }
 

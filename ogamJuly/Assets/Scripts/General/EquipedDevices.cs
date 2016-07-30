@@ -21,7 +21,6 @@ public class EquipedDevices : MonoBehaviour {
     void OnEnable()
     {
         mods = transform.root.GetComponent<Modules>();
-        Debug.Log("Loading from prefabs from " + gameObject.name);
         LoadShipPrefabs();
     }
 

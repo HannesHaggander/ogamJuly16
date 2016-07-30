@@ -15,6 +15,8 @@ public class GalaxyInformation : MonoBehaviour
     string selectKey = "leftMouseBtn";
     string interactKey = "Interact";
 
+    public Shader unlitShader = null;
+
     void Update()
     {
         if (Selected)
@@ -57,7 +59,7 @@ public class GalaxyInformation : MonoBehaviour
             LineRenderer tmpLR =  tmpEmpty.GetComponent<LineRenderer>();
             tmpLR.SetPosition(0, transform.position);
             tmpLR.SetPosition(1, g.transform.position);
-            Material diffureMatt = new Material(Shader.Find("Unlit/Texture"));
+            Material diffureMatt = new Material(unlitShader);
             tmpLR.material = diffureMatt;
             galaxyTravelLines[counter] = tmpLR;
         }

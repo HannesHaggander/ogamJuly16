@@ -22,7 +22,7 @@ public class RelayBehaviour : MonoBehaviour {
             {
                 if (c.transform.root.tag.Equals("Player"))
                 {
-                    Debug.Log("End relay reached...");
+//                    Debug.Log("End relay reached...");
                     SceneManager.LoadScene("GalaxyMap");
                 }
             }

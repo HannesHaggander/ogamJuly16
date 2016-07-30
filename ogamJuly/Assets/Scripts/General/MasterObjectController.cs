@@ -53,7 +53,7 @@ public class MasterObjectController : MonoBehaviour {
                 PlayerPrefabs.SetActive(true);
                 break;
             case "SetupScene":
-                Debug.Log("Setup");
+//                Debug.Log("Setup");
                 break;
             default: Debug.Log("Error: MasterController switch does not contain this scene");
                 break;
