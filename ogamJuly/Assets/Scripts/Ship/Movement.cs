@@ -55,6 +55,9 @@ public class Movement : MonoBehaviour {
             moveVector.x = transform.position.x + horizontalValue;
             moveVector.y = transform.position.y + verticalValue;
             transform.position = Vector3.MoveTowards(transform.position, moveVector, speed * Time.deltaTime);
+        } else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, transform.position, 1);
         }
 
         BoostShip(Input.GetButton(BoostAxis));

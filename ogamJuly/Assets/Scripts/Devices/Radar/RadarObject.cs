@@ -10,14 +10,15 @@ public class RadarObject : MonoBehaviour {
 
     private string showRadarAxis = "ShowRadar";
 
-    void Start ()
+    void OnEnable ()
     {
         GotChildren = false;
         GenObj = GameObject.Find("GeneratedObjects");
         if (GenObj)
         {
             GObjs = GenObj.GetComponent<GeneratedObjs>();
-        }
+        } 
+        else { Debug.Log("Could not find generatedObjects"); }
 	}
 
     void Update()
@@ -30,32 +31,32 @@ public class RadarObject : MonoBehaviour {
                 GameObject pointer = null;
                 foreach (Transform child in GenObj.transform)
                 {
-                    pointer = (GameObject) Instantiate(toSpawn);
+                    pointer = Instantiate(toSpawn);
                     pointer.GetComponent<RadarPointer>().SetTarget(child);
                     pointer.transform.SetParent(transform);
                 }
                 GotChildren = true;
-            }
-        }
+            } 
+        } 
 
         if (GotChildren)
         {
-            ToggleRadar(Input.GetButton(showRadarAxis));
+            if (Input.GetButtonDown(showRadarAxis))
+            {
+                ToggleRadar();
+            }
         }
     }
 
-    void ToggleRadar(bool b)
+    void ToggleRadar()
     {
-        if(b == GetComponent<SpriteRenderer>().enabled)
+        SpriteRenderer tmpSR = GetComponent<SpriteRenderer>();
+        tmpSR.enabled = !tmpSR.enabled;
+        
+        foreach (Transform child in transform)
         {
-            return;
-        } else
-        {
-            GetComponent<SpriteRenderer>().enabled = b;
-            foreach (Transform child in transform)
-            {
-                child.GetComponent<SpriteRenderer>().enabled = b;
-            }
+            tmpSR = child.GetComponent<SpriteRenderer>();
+            tmpSR.enabled = !tmpSR.enabled;
         }
     }
 }

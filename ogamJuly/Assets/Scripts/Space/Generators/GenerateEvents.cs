@@ -57,5 +57,6 @@ public class GenerateEvents : MonoBehaviour {
             go.transform.SetParent(EventContainer);
         }
         EventContainer.GetComponent<GeneratedObjs>().GeneratingIsDone();
+
     }
 }

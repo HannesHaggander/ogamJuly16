@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\Space\Generators\GeneratedObjs.cs" />
     <Compile Include="Assets\Scripts\UserInterface\Buttons\Menu\MenuButtons.cs" />
     <Compile Include="Assets\Scripts\UserInterface\DialogBehaviour.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UIActiveBehaviour.cs" />
     <Compile Include="Assets\Scripts\UserInterface\UserInterface.cs" />
   </ItemGroup>
   <ItemGroup>

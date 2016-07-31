@@ -3,7 +3,20 @@ using System.Collections;
 
 public class RadarPointer : MonoBehaviour {
 
-    private Transform Target = null;
+    public Transform Target = null;
+
+    void Start()
+    {
+        if (Target)
+        {
+            switch (Target.tag)
+            {
+                case "Relay": SetNewColour(Color.green); break;
+                default: break;
+            }
+        }
+        
+    }
 
 	void Update ()
     {
@@ -20,5 +33,14 @@ public class RadarPointer : MonoBehaviour {
     public void SetTarget(Transform t)
     {
         Target = t;
+    }
+
+    void SetNewColour(Color newColour)
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr)
+        {
+            sr.color = newColour;
+        } else { Debug.Log("Missing sr"); }
     }
 }

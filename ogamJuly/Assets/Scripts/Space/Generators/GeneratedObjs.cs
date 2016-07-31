@@ -6,11 +6,6 @@ public class GeneratedObjs : MonoBehaviour {
     [SerializeField]
     private bool GeneratingDone = false;
 
-    void Start()
-    {
-        GeneratingDone = false;
-    }
-
     public bool isGeneratingDone()
     {
         return GeneratingDone;
