@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Events\AbandonedShipEvent\AbandonedShip.cs" />
     <Compile Include="Assets\Scripts\Events\AbandonedShipEvent\EventSpawnPirateShip.cs" />
     <Compile Include="Assets\Scripts\Events\BaseEventsUtils.cs" />
+    <Compile Include="Assets\Scripts\Events\DialogBase.cs" />
     <Compile Include="Assets\Scripts\Events\RelayBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\DontDestroyOnLoad.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\Scripts\Space\Generators\GenerateGalaxy.cs" />
     <Compile Include="Assets\Scripts\Space\Generators\GeneratedObjs.cs" />
     <Compile Include="Assets\Scripts\UserInterface\Buttons\Menu\MenuButtons.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\DialogBehaviour.cs" />
     <Compile Include="Assets\Scripts\UserInterface\UserInterface.cs" />
     <Compile Include="Assets\Scripts\misctest.cs" />
   </ItemGroup>
