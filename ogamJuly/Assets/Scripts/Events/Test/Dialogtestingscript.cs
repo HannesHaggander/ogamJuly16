@@ -15,6 +15,7 @@ public class Dialogtestingscript : DialogBase {
     public override void Response1()
     {
         Debug.Log("user pressed resp 1");
+        GameObject.Find("MasterObject").GetComponent<PlayerInformationData>().Credits += 100;
         base.Response1();
     }
 

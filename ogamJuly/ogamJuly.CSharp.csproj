@@ -102,7 +102,6 @@
     <Compile Include="Assets\Scripts\UserInterface\Buttons\Menu\MenuButtons.cs" />
     <Compile Include="Assets\Scripts\UserInterface\DialogBehaviour.cs" />
     <Compile Include="Assets\Scripts\UserInterface\UserInterface.cs" />
-    <Compile Include="Assets\Scripts\misctest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Materials\UnlitShader.shader" />

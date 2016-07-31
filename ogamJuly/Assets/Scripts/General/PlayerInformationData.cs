@@ -12,6 +12,7 @@ public class PlayerInformationData : MonoBehaviour {
     private string[] weaponPaths, shieldPaths, enginePaths;
 
     public GameObject ShipInformation;
+    public int Credits = 0;
 
     void OnLevelWasLoaded(int i)
     { 

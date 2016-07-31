@@ -9,7 +9,13 @@ public class Movement : MonoBehaviour {
     public string BoostAxis = "EngineBoost";
 
     public float ShipTurnRate = 0.3f;
-    public Vector3 MovePoint = Vector3.zero;
+    //public Vector3 MovePoint = Vector3.zero;
+
+    public string HorizontalAxis = "Horizontal";
+    public string VerticalAxis = "Vertical";
+    private float horizontalValue = 0;
+    private float verticalValue = 0;
+    private Vector3 moveVector = Vector3.zero;
 
     //tmp variables for calculations
     Vector3 mouseposTmp;
@@ -17,30 +23,44 @@ public class Movement : MonoBehaviour {
 
     void Start ()
     {
-
         if (!attatchedRB)
         {
             attatchedRB = GetComponent<Rigidbody>();
         }
-        MovePoint = transform.position;
+        //MovePoint = transform.position;
         tmpBSE = GetEngine();
         SetTurnSpeed();
 	}
 	
+    void Update()
+    {
+        horizontalValue = Input.GetAxis(HorizontalAxis);
+        verticalValue = Input.GetAxis(VerticalAxis);
+    }
+
 	void FixedUpdate ()
     {
-        if (Input.GetMouseButton(0))
+        /*if (Input.GetMouseButton(0))
         {
             MovePoint = GetXYMousePos();
-        }
+        }*/
+
         if (!Input.GetMouseButton(1))
         {
             RotateTowardMousePos();
         }
 
+        if(Mathf.Abs(horizontalValue) > 0 || Mathf.Abs(verticalValue) > 0)
+        {
+            moveVector.x = transform.position.x + horizontalValue;
+            moveVector.y = transform.position.y + verticalValue;
+            transform.position = Vector3.MoveTowards(transform.position, moveVector, speed * Time.deltaTime);
+        }
+
         BoostShip(Input.GetButton(BoostAxis));
 
-        MoveTowardMousePos();
+
+        //MoveTowardMousePos();
     }
 
     /// <summary>
@@ -59,10 +79,10 @@ public class Movement : MonoBehaviour {
     /// <summary>
     /// Move the transform towards the mouse position where the user pressed left mouse button
     /// </summary>
-    private void MoveTowardMousePos()
+   /* private void MoveTowardMousePos()
     {
         transform.position = Vector3.MoveTowards(transform.position, MovePoint, speed * Time.deltaTime);
-    }
+    }*/
 
     /// <summary>
     /// Rotate front towards the mouse position
