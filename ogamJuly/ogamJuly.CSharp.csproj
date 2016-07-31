@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Events\BaseEventsUtils.cs" />
     <Compile Include="Assets\Scripts\Events\DialogBase.cs" />
     <Compile Include="Assets\Scripts\Events\RelayBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Events\Test\Dialogtestingscript.cs" />
     <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\General\EquipedDevices.cs" />
