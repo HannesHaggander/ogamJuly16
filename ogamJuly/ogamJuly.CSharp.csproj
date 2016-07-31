@@ -79,6 +79,12 @@
     <Compile Include="Assets\Scripts\Events\BaseEventsUtils.cs" />
     <Compile Include="Assets\Scripts\Events\DialogBase.cs" />
     <Compile Include="Assets\Scripts\Events\RelayBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Events\Shop\AbandonedShop.cs" />
+    <Compile Include="Assets\Scripts\Events\Shop\ExpensiveDeviceShop.cs" />
+    <Compile Include="Assets\Scripts\Events\Shop\RegularDeviceShop.cs" />
+    <Compile Include="Assets\Scripts\Events\Shop\ShopEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\Shop\TroubledShop.cs" />
+    <Compile Include="Assets\Scripts\Events\Shop\UpgradeShop.cs" />
     <Compile Include="Assets\Scripts\Events\Test\Dialogtestingscript.cs" />
     <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\DontDestroyOnLoad.cs" />

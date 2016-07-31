@@ -3,6 +3,9 @@ using System.Collections;
 
 public class BaseEventsUtils : MonoBehaviour {
 
+    [SerializeField]
+    protected GameObject[] Events;
+
     Collider[] col = null;
     [SerializeField]
     private float TriggerRange = 50;
@@ -25,7 +28,8 @@ public class BaseEventsUtils : MonoBehaviour {
 
     protected virtual void SpawnRandomEvent()
     {
-        Debug.Log("spawn random event needs to be overwritten for " + transform.root.name);
+        Debug.Log("Generating event...");
+        Instantiate(Events[Random.Range(0, Events.Length)], transform.position, transform.rotation);
     }
 
     protected virtual void SpawnSelectedEvent(int index)

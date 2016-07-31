@@ -4,6 +4,7 @@ using System.Collections;
 public class RadarPointer : MonoBehaviour {
 
     public Transform Target = null;
+    public float minimumAlpha = 0.1f;
 
     SpriteRenderer sr;
 
@@ -14,8 +15,8 @@ public class RadarPointer : MonoBehaviour {
         {
             switch (Target.tag)
             {
-                case "Relay": SetNewColour(Color.green); break;
-                case "Shop": SetNewColour(Color.blue); break;
+                case "Relay": SetNewColour(Color.green); minimumAlpha = 0.5f; break;
+                case "Shop": SetNewColour(Color.magenta); break;
                 default: break;
             }
         }
@@ -59,8 +60,8 @@ public class RadarPointer : MonoBehaviour {
         if(dist > 1000) { tmpCol.a = 10; }
         else { tmpCol.a = 1 - (dist / 100); }
 
-        if(dist < 20) { tmpCol.a = 0; }
-        else if(tmpCol.a < 0.1f) { tmpCol.a = 0.1f; }
+        if(dist < 20) { tmpCol.a = 0; minimumAlpha = 0.1f; }
+        else if(tmpCol.a < minimumAlpha) { tmpCol.a = minimumAlpha; }
         
         sr.color = tmpCol;
     }

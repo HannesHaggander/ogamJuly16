@@ -36,6 +36,8 @@ public class Movement : MonoBehaviour {
     {
         horizontalValue = Input.GetAxis(HorizontalAxis);
         verticalValue = Input.GetAxis(VerticalAxis);
+        if (!attatchedRB) { attatchedRB = GetComponent<Rigidbody>(); } 
+        else { attatchedRB.velocity = Vector3.zero; }
     }
 
 	void FixedUpdate ()

@@ -3,8 +3,6 @@ using System.Collections;
 
 public class AbandonedShip : BaseEventsUtils {
 
-    [SerializeField]
-    protected GameObject[] Events;
 
 	void Update ()
     {
@@ -16,8 +14,7 @@ public class AbandonedShip : BaseEventsUtils {
 
     override protected void SpawnRandomEvent()
     {
-        Debug.Log("Generating event...");
-        Instantiate(Events[Random.Range(0, Events.Length)], transform.position, transform.rotation);
+        base.SpawnRandomEvent();
         Destroy(transform.GetComponent<AbandonedShip>());
     }
 }
