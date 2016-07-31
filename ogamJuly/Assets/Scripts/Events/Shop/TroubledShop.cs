@@ -3,8 +3,8 @@ using System.Collections;
 
 public class TroubledShop : DialogBase {
 
-    public string Dialog = "Thank you for saving me! I do not have much, but I will give give you a 25% off all wares in my shop.";
-    string[] dialogOptions = new string[] { "Accept" };
+    private string Dialog = "Thank you for saving me! I do not have much, but I will give give you a 25% off all my wares.";
+    private string[] dialogOptions = new string[] { "Accept" };
 
     public int shipsToSpawn = 2;
     private GameObject[] spawnedShips;

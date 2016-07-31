@@ -33,11 +33,9 @@ public class AttackPlayer : MonoBehaviour {
         engineGO = mods.GetEngine();
         if (engineGO)
         {
-            Debug.Log("Found engine " + engineGO.name);
             equipedEngine = engineGO.GetComponentInChildren<BaseShipEngine>();
             if (equipedEngine)
             {
-                Debug.Log("Found engine script");
                 cruiseSpeed = equipedEngine.GetCrusingSpeed();
                 boostSpeed = equipedEngine.GetBoostSpeed();
                 turnRate = equipedEngine.GetTurnRate();

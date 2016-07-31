@@ -53,7 +53,6 @@ public class DialogBase : MonoBehaviour {
         if (!DialBeh) { InitiateDialog(); }
         if (DialBeh) { DialBeh.SetSettings(dialogText, responseTexts, gameObject); }
         else { Debug.Log("Missing Dialog Behaviour " + gameObject.name); }
-        Debug.Log("triggering dialog");
     }
 
     virtual public void Response1()
