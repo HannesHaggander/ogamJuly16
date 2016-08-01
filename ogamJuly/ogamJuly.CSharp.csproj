@@ -76,6 +76,11 @@
     <Compile Include="Assets\Scripts\Devices\Weapons\SeekerMissile.cs" />
     <Compile Include="Assets\Scripts\Events\AbandonedShipEvent\AbandonedShip.cs" />
     <Compile Include="Assets\Scripts\Events\AbandonedShipEvent\EventSpawnPirateShip.cs" />
+    <Compile Include="Assets\Scripts\Events\AstroidEvents\AstroidEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\AstroidEvents\MeteorShowerEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\AstroidEvents\RotatoinAdroidBeltEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\AstroidEvents\StationaryAstroidEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\AstroidEvents\roamingAstroidEvent.cs" />
     <Compile Include="Assets\Scripts\Events\BaseEventsUtils.cs" />
     <Compile Include="Assets\Scripts\Events\DialogBase.cs" />
     <Compile Include="Assets\Scripts\Events\RelayBehaviour.cs" />
@@ -85,7 +90,6 @@
     <Compile Include="Assets\Scripts\Events\Shop\ShopEvent.cs" />
     <Compile Include="Assets\Scripts\Events\Shop\TroubledShop.cs" />
     <Compile Include="Assets\Scripts\Events\Shop\UpgradeShop.cs" />
-    <Compile Include="Assets\Scripts\Events\Test\Dialogtestingscript.cs" />
     <Compile Include="Assets\Scripts\General\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\General\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\General\EquipedDevices.cs" />

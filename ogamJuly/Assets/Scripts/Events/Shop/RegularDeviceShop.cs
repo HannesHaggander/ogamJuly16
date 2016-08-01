@@ -16,7 +16,6 @@ public class RegularDeviceShop : DialogBase {
 	
     void Start()
     {
-        Debug.Log("Test");
         player = GameObject.FindGameObjectWithTag("Player");
         if (player)
         {
