@@ -54,6 +54,7 @@ public class RegularDeviceShop : DialogBase {
             case 'e': mods.ChangeEngine(0, inThisShop[0]); break;
             default: break;
         }
+        Destroy(GetComponent<RegularDeviceShop>());
         Debug.Log("Changed " + inThisShop[0]);
         base.Response1();
     }
@@ -68,6 +69,7 @@ public class RegularDeviceShop : DialogBase {
             default: break;
         }
         Debug.Log("Changed " + inThisShop[1]);
+        Destroy(GetComponent<RegularDeviceShop>());
         base.Response2();
     }
 
