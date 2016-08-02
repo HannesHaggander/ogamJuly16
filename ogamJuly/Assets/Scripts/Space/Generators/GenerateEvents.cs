@@ -7,8 +7,8 @@ public class GenerateEvents : MonoBehaviour {
     private string eventsFolder = "Prefabs/Events/GeneratedEvents";
     private float minRelayDistance = 500, maxRelayDistance = 600;
     public Transform EventContainer = null;
-    private float distanceBetweenRelays = 600;
-    private float eventXDistance = 500;
+    private float distanceBetweenRelays = 400;
+    private float eventXDistance = 300;
 
     [SerializeField]
     private int maxEvents = 10;
